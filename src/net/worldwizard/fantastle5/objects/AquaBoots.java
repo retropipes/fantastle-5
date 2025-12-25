@@ -23,26 +23,26 @@ import net.worldwizard.fantastle5.generic.GenericBoots;
 public class AquaBoots extends GenericBoots {
     // Constructors
     public AquaBoots() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Aqua Boots";
+	return "Aqua Boots";
     }
 
     @Override
     public String getPluralName() {
-        return "Pairs of Aqua Boots";
+	return "Pairs of Aqua Boots";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 1;
+	return (byte) 1;
     }
 
     @Override
     public String getDescription() {
-        return "Aqua Boots allow walking on water. Note that you can only wear one pair of boots at once.";
+	return "Aqua Boots allow walking on water. Note that you can only wear one pair of boots at once.";
     }
 }

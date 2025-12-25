@@ -34,40 +34,37 @@ public class DrainTrap extends GenericTrap {
 
     // Constructors
     public DrainTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Drain Trap";
+	return "Drain Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Drain Traps";
+	return "Drain Traps";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 11;
+	return (byte) 11;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.maxDrain = PCManager.getPlayer().getMaximumMP() / 10;
-        this.amountDrained = new RandomRange(this.maxDrain,
-                DrainTrap.MIN_DRAIN);
-        PCManager.getPlayer().regenerate(this.amountDrained.generate());
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            SoundManager.playSoundAsynchronously("barrier");
-        }
-        Fantastle5.getApplication().getGameManager().decay();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.maxDrain = PCManager.getPlayer().getMaximumMP() / 10;
+	this.amountDrained = new RandomRange(this.maxDrain, DrainTrap.MIN_DRAIN);
+	PCManager.getPlayer().regenerate(this.amountDrained.generate());
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    SoundManager.playSoundAsynchronously("barrier");
+	}
+	Fantastle5.getApplication().getGameManager().decay();
     }
 
     @Override
     public String getDescription() {
-        return "Drain Traps drain your magic when stepped on, then disappear.";
+	return "Drain Traps drain your magic when stepped on, then disappear.";
     }
 }

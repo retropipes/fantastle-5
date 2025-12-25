@@ -30,73 +30,71 @@ public class ScoreTable {
 
     // Constructors
     public ScoreTable() {
-        this.table = new Score[10];
-        int x;
-        for (x = 0; x < 10; x++) {
-            this.table[x] = new Score();
-        }
-        this.unit = ScoreTable.DEFAULT_UNIT;
+	this.table = new Score[10];
+	int x;
+	for (x = 0; x < 10; x++) {
+	    this.table[x] = new Score();
+	}
+	this.unit = ScoreTable.DEFAULT_UNIT;
     }
 
     public ScoreTable(final int length, final String customUnit) {
-        this.table = new Score[length];
-        int x;
-        for (x = 0; x < length; x++) {
-            this.table[x] = new Score();
-        }
-        if (customUnit == null || customUnit.equals("")) {
-            this.unit = ScoreTable.DEFAULT_UNIT;
-        } else {
-            this.unit = " " + customUnit;
-        }
+	this.table = new Score[length];
+	int x;
+	for (x = 0; x < length; x++) {
+	    this.table[x] = new Score();
+	}
+	if (customUnit == null || customUnit.equals("")) {
+	    this.unit = ScoreTable.DEFAULT_UNIT;
+	} else {
+	    this.unit = " " + customUnit;
+	}
     }
 
     // Methods
     public long getEntryScore(final int pos) {
-        return this.table[pos].getScore();
+	return this.table[pos].getScore();
     }
 
     public String getEntryName(final int pos) {
-        return this.table[pos].getName();
+	return this.table[pos].getName();
     }
 
     public int getLength() {
-        return this.table.length;
+	return this.table.length;
     }
 
     public String getUnit() {
-        return this.unit;
+	return this.unit;
     }
 
     public void setEntryScore(final int pos, final long newScore) {
-        this.table[pos].setScore(newScore);
+	this.table[pos].setScore(newScore);
     }
 
     public void setEntryName(final int pos, final String newName) {
-        this.table[pos].setName(newName);
+	this.table[pos].setName(newName);
     }
 
-    public static ScoreTable readScoreTable(final BufferedReader stream)
-            throws IOException {
-        final int len = Integer.parseInt(stream.readLine());
-        final String unit = stream.readLine();
-        final ScoreTable st = new ScoreTable(len, unit);
-        for (int x = 0; x < len; x++) {
-            st.table[x] = Score.readScore(stream);
-        }
-        return st;
+    public static ScoreTable readScoreTable(final BufferedReader stream) throws IOException {
+	final int len = Integer.parseInt(stream.readLine());
+	final String unit = stream.readLine();
+	final ScoreTable st = new ScoreTable(len, unit);
+	for (int x = 0; x < len; x++) {
+	    st.table[x] = Score.readScore(stream);
+	}
+	return st;
     }
 
-    public void writeScoreTable(final BufferedWriter stream)
-            throws IOException {
-        stream.write(Integer.toString(this.table.length) + "\n");
-        if (this.unit.length() > 1) {
-            stream.write(this.unit.substring(1) + "\n");
-        } else {
-            stream.write(this.unit + "\n");
-        }
-        for (final Score element : this.table) {
-            element.writeScore(stream);
-        }
+    public void writeScoreTable(final BufferedWriter stream) throws IOException {
+	stream.write(Integer.toString(this.table.length) + "\n");
+	if (this.unit.length() > 1) {
+	    stream.write(this.unit.substring(1) + "\n");
+	} else {
+	    stream.write(this.unit + "\n");
+	}
+	for (final Score element : this.table) {
+	    element.writeScore(stream);
+	}
     }
 }

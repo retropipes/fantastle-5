@@ -32,44 +32,41 @@ public class ClockwiseRotationTrap extends GenericTrap {
 
     // Constructors
     public ClockwiseRotationTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Clockwise Rotation Trap";
+	return "Clockwise Rotation Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Clockwise Rotation Traps";
+	return "Clockwise Rotation Traps";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 1;
+	return (byte) 1;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playRotatedSound();
-        }
-        Messager.showMessage("Your controls are rotated!");
-        Fantastle5.getApplication().getGameManager().activateEffect(
-                EffectConstants.EFFECT_ROTATED_CLOCKWISE,
-                ClockwiseRotationTrap.EFFECT_DURATION);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playRotatedSound();
+	}
+	Messager.showMessage("Your controls are rotated!");
+	Fantastle5.getApplication().getGameManager().activateEffect(EffectConstants.EFFECT_ROTATED_CLOCKWISE,
+		ClockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "change";
+	return "change";
     }
 
     @Override
     public String getDescription() {
-        return "Clockwise Rotation Traps rotate your controls clockwise for 10 steps when stepped on.";
+	return "Clockwise Rotation Traps rotate your controls clockwise for 10 steps when stepped on.";
     }
 }

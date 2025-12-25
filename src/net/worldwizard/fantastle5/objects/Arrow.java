@@ -23,6 +23,6 @@ import net.worldwizard.fantastle5.generic.GenericTransientObject;
 public class Arrow extends GenericTransientObject {
     // Constructors
     public Arrow() {
-        super("Arrow");
+	super("Arrow");
     }
 }

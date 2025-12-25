@@ -25,40 +25,39 @@ import net.worldwizard.fantastle5.generic.GenericWand;
 public class DisarmTrapWand extends GenericWand {
     // Constructors
     public DisarmTrapWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Disarm Trap Wand";
+	return "Disarm Trap Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Disarm Trap Wands";
+	return "Disarm Trap Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z, final int w) {
-        this.useAction(new Empty(), x, y, z, w);
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playUseSound();
-        }
+	this.useAction(new Empty(), x, y, z, w);
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playUseSound();
+	}
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 6;
+	return (byte) 6;
     }
 
     @Override
     public String getUseSoundName() {
-        return "destroy";
+	return "destroy";
     }
 
     @Override
     public String getDescription() {
-        return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
+	return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
     }
 }

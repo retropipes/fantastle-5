@@ -10,35 +10,33 @@ public class Spell {
     private final String soundEffect;
 
     // Constructors
-    public Spell(final Effect newEffect, final int newCost,
-            final char newTarget) {
-        this.effect = newEffect;
-        this.cost = newCost;
-        this.target = newTarget;
-        this.soundEffect = null;
+    public Spell(final Effect newEffect, final int newCost, final char newTarget) {
+	this.effect = newEffect;
+	this.cost = newCost;
+	this.target = newTarget;
+	this.soundEffect = null;
     }
 
-    public Spell(final Effect newEffect, final int newCost,
-            final char newTarget, final String sfx) {
-        this.effect = newEffect;
-        this.cost = newCost;
-        this.target = newTarget;
-        this.soundEffect = sfx;
+    public Spell(final Effect newEffect, final int newCost, final char newTarget, final String sfx) {
+	this.effect = newEffect;
+	this.cost = newCost;
+	this.target = newTarget;
+	this.soundEffect = sfx;
     }
 
     public Effect getEffect() {
-        return this.effect;
+	return this.effect;
     }
 
     public int getCost() {
-        return this.cost;
+	return this.cost;
     }
 
     public char getTarget() {
-        return this.target;
+	return this.target;
     }
 
     public String getSound() {
-        return this.soundEffect;
+	return this.soundEffect;
     }
 }

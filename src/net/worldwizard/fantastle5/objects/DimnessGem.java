@@ -26,43 +26,40 @@ import net.worldwizard.fantastle5.generic.MazeObject;
 public class DimnessGem extends GenericGem {
     // Constructors
     public DimnessGem() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Dimness Gem";
+	return "Dimness Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Dimness Gems";
+	return "Dimness Gems";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 1;
+	return (byte) 1;
     }
 
     @Override
     public void postMoveActionHook() {
-        final int currLevel = Fantastle5.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationW();
-        Fantastle5.getApplication().getMazeManager().getMaze()
-                .decrementVisionRadius(currLevel);
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playDarknessSound();
-        }
+	final int currLevel = Fantastle5.getApplication().getGameManager().getPlayerManager().getPlayerLocationW();
+	Fantastle5.getApplication().getMazeManager().getMaze().decrementVisionRadius(currLevel);
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playDarknessSound();
+	}
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "darkness";
+	return "darkness";
     }
 
     @Override
     public String getDescription() {
-        return "Dimness Gems decrease the visible area by 1.";
+	return "Dimness Gems decrease the visible area by 1.";
     }
 }

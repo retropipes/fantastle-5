@@ -26,51 +26,50 @@ import net.worldwizard.fantastle5.Fantastle5;
 
 public class SoundManager {
     private static Sound getSound(final String filename) {
-        // Get it from the cache
-        return SoundCache.getCachedSound(filename);
+	// Get it from the cache
+	return SoundCache.getCachedSound(filename);
     }
 
     static Sound getUncachedSound(final String filename) {
-        try {
-            final URL url = SoundManager.class
-                    .getResource("/net/worldwizard/fantastle5/resources/sounds/"
-                            + filename.toLowerCase() + ".wav");
-            final Sound snd = new Sound(url);
-            return snd;
-        } catch (final NullPointerException np) {
-            return null;
-        }
+	try {
+	    final URL url = SoundManager.class
+		    .getResource("/net/worldwizard/fantastle5/resources/sounds/" + filename.toLowerCase() + ".wav");
+	    final Sound snd = new Sound(url);
+	    return snd;
+	} catch (final NullPointerException np) {
+	    return null;
+	}
     }
 
     public static void playSoundAsynchronously(final String soundName) {
-        final Sound snd = SoundManager.getSound(soundName);
-        if (snd != null) {
-            // Play the sound asynchronously
-            try {
-                snd.play();
-            } catch (final BufferUnderflowException bue) {
-                // Ignore
-            } catch (final NullPointerException np) {
-                // Ignore
-            } catch (final Throwable t) {
-                Fantastle5.getDebug().debug(t);
-            }
-        }
+	final Sound snd = SoundManager.getSound(soundName);
+	if (snd != null) {
+	    // Play the sound asynchronously
+	    try {
+		snd.play();
+	    } catch (final BufferUnderflowException bue) {
+		// Ignore
+	    } catch (final NullPointerException np) {
+		// Ignore
+	    } catch (final Throwable t) {
+		Fantastle5.getDebug().debug(t);
+	    }
+	}
     }
 
     public static void playSoundSynchronously(final String soundName) {
-        final Sound snd = SoundManager.getSound(soundName);
-        if (snd != null) {
-            // Play the sound synchronously
-            try {
-                snd.syncPlay();
-            } catch (final BufferUnderflowException bue) {
-                // Ignore
-            } catch (final NullPointerException np) {
-                // Ignore
-            } catch (final Throwable t) {
-                Fantastle5.getDebug().debug(t);
-            }
-        }
+	final Sound snd = SoundManager.getSound(soundName);
+	if (snd != null) {
+	    // Play the sound synchronously
+	    try {
+		snd.syncPlay();
+	    } catch (final BufferUnderflowException bue) {
+		// Ignore
+	    } catch (final NullPointerException np) {
+		// Ignore
+	    } catch (final Throwable t) {
+		Fantastle5.getDebug().debug(t);
+	    }
+	}
     }
 }

@@ -29,7 +29,6 @@ public interface RaceConstants {
     int RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL = 4;
     int RACE_ATTRIBUTE_LUCK_PER_LEVEL = 5;
     int RACE_ATTRIBUTE_COUNT = 6;
-    String[] RACE_NAMES = { "Cyborg", "Demon", "Dwarf", "Eagle", "Elf", "Ghost",
-            "Gnome", "Goblin", "Human", "Lizard", "Mush", "Orc", "Penguin",
-            "Pixie", "Robot", "Shade", "Slime", "Troll", "Turtle", "Wolf" };
+    String[] RACE_NAMES = { "Cyborg", "Demon", "Dwarf", "Eagle", "Elf", "Ghost", "Gnome", "Goblin", "Human", "Lizard",
+	    "Mush", "Orc", "Penguin", "Pixie", "Robot", "Shade", "Slime", "Troll", "Turtle", "Wolf" };
 }

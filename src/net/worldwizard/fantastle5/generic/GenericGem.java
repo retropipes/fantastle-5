@@ -28,55 +28,51 @@ import net.worldwizard.fantastle5.resourcemanagers.SoundManager;
 public abstract class GenericGem extends MazeObject {
     // Constructors
     protected GenericGem() {
-        super(false);
+	super(false);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Fantastle5.getApplication().getGameManager().decay();
-        this.postMoveActionHook();
-        Fantastle5.getApplication().getGameManager().redrawMaze();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Fantastle5.getApplication().getGameManager().decay();
+	this.postMoveActionHook();
+	Fantastle5.getApplication().getGameManager().redrawMaze();
     }
 
     public abstract void postMoveActionHook();
 
     @Override
     public byte getGroupID() {
-        return (byte) 29;
+	return (byte) 29;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_GEM);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+	this.type.set(TypeConstants.TYPE_GEM);
+	this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public int getLayer() {
-        return Maze.LAYER_OBJECT;
+	return Maze.LAYER_OBJECT;
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int locW, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
-        Fantastle5.getApplication().getGameManager().morph(new Empty(), locX,
-                locY, locZ, locW);
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            SoundManager.playSoundAsynchronously("shatter");
-        }
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int locW, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	Fantastle5.getApplication().getGameManager().morph(new Empty(), locX, locY, locZ, locW);
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    SoundManager.playSoundAsynchronously("shatter");
+	}
+	return false;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+	return MazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 }

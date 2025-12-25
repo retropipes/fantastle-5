@@ -19,13 +19,12 @@ public class InfiniteRecursionException extends RuntimeException {
     }
 
     /**
-     * Constructs an instance of <code>InfiniteRecursionException</code> with
-     * the specified detail message.
+     * Constructs an instance of <code>InfiniteRecursionException</code> with the
+     * specified detail message.
      *
-     * @param msg
-     *            the detail message.
+     * @param msg the detail message.
      */
     public InfiniteRecursionException(final String msg) {
-        super(msg);
+	super(msg);
     }
 }

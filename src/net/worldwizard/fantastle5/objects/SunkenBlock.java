@@ -23,26 +23,26 @@ import net.worldwizard.fantastle5.generic.GenericGround;
 public class SunkenBlock extends GenericGround {
     // Constructors
     public SunkenBlock() {
-        super(true, true, true, true);
+	super(true, true, true, true);
     }
 
     @Override
     public String getName() {
-        return "Sunken Block";
+	return "Sunken Block";
     }
 
     @Override
     public String getPluralName() {
-        return "Sunken Blocks";
+	return "Sunken Blocks";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 3;
+	return (byte) 3;
     }
 
     @Override
     public String getDescription() {
-        return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
+	return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
     }
 }

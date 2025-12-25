@@ -26,56 +26,50 @@ import net.worldwizard.fantastle5.generic.GenericWall;
 public class DamagedWall extends GenericWall {
     // Constructors
     public DamagedWall() {
-        super();
+	super();
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int locW, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
-        this.moveFailedAction(true, locX, locY, inv);
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int locW, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	this.moveFailedAction(true, locX, locY, inv);
+	return false;
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        // Destroy the wall
-        final int pz = Fantastle5.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationZ();
-        final int pw = Fantastle5.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationW();
-        Fantastle5.getApplication().getGameManager().morph(new Empty(), dirX,
-                dirY, pz, pw);
-        // Play move failed sound, if it's enabled
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveFailedSound();
-        }
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Destroy the wall
+	final int pz = Fantastle5.getApplication().getGameManager().getPlayerManager().getPlayerLocationZ();
+	final int pw = Fantastle5.getApplication().getGameManager().getPlayerManager().getPlayerLocationW();
+	Fantastle5.getApplication().getGameManager().morph(new Empty(), dirX, dirY, pz, pw);
+	// Play move failed sound, if it's enabled
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveFailedSound();
+	}
     }
 
     @Override
     public String getName() {
-        return "Damaged Wall";
+	return "Damaged Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Damaged Walls";
+	return "Damaged Walls";
     }
 
     @Override
     public String getMoveFailedSoundName() {
-        return "crack";
+	return "crack";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 0;
+	return (byte) 0;
     }
 
     @Override
     public String getDescription() {
-        return "Damaged Walls crumble to nothing when hit.";
+	return "Damaged Walls crumble to nothing when hit.";
     }
 }

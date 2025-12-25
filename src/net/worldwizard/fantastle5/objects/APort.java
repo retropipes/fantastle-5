@@ -23,6 +23,6 @@ import net.worldwizard.fantastle5.generic.GenericPort;
 public class APort extends GenericPort {
     // Constructors
     public APort() {
-        super(new APlug(), 'A');
+	super(new APlug(), 'A');
     }
 }

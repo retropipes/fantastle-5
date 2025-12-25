@@ -6,31 +6,31 @@ import net.worldwizard.fantastle5.generic.GenericDungeonObject;
 public class SpellShop extends GenericDungeonObject {
     // Constructors
     public SpellShop() {
-        super(false);
+	super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-        Fantastle5.getApplication().getSpells().showShop();
+	Fantastle5.getApplication().getSpells().showShop();
     }
 
     @Override
     public String getName() {
-        return "Spell Shop";
+	return "Spell Shop";
     }
 
     @Override
     public String getPluralName() {
-        return "Spell Shops";
+	return "Spell Shops";
     }
 
     @Override
     public String getDescription() {
-        return "Spell Shops teach spells, for a fee.";
+	return "Spell Shops teach spells, for a fee.";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 6;
+	return (byte) 6;
     }
 }

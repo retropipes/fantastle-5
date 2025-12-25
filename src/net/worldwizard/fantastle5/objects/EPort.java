@@ -23,6 +23,6 @@ import net.worldwizard.fantastle5.generic.GenericPort;
 public class EPort extends GenericPort {
     // Constructors
     public EPort() {
-        super(new EPlug(), 'E');
+	super(new EPlug(), 'E');
     }
 }

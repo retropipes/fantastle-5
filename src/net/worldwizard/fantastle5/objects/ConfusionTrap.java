@@ -32,43 +32,41 @@ public class ConfusionTrap extends GenericTrap {
 
     // Constructors
     public ConfusionTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Confusion Trap";
+	return "Confusion Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Confusion Traps";
+	return "Confusion Traps";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 4;
+	return (byte) 4;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Messager.showMessage("You are confused!");
-        Fantastle5.getApplication().getGameManager().activateEffect(
-                EffectConstants.EFFECT_CONFUSED, ConfusionTrap.EFFECT_DURATION);
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playConfusedSound();
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Messager.showMessage("You are confused!");
+	Fantastle5.getApplication().getGameManager().activateEffect(EffectConstants.EFFECT_CONFUSED,
+		ConfusionTrap.EFFECT_DURATION);
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playConfusedSound();
+	}
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "confused";
+	return "confused";
     }
 
     @Override
     public String getDescription() {
-        return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
+	return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
     }
 }

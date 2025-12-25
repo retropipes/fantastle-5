@@ -40,41 +40,36 @@ public final class GraphicalHelpViewer {
     private final JScrollPane scrollPane;
 
     // Constructor
-    public GraphicalHelpViewer(final BufferedImageIcon[] pictures,
-            final String[] descriptions) {
-        this.helpContainer = new Container();
-        this.helpContainer.setLayout(new BorderLayout());
-        this.choiceContainer = new Container();
-        this.scrollPane = new JScrollPane(this.choiceContainer);
-        this.scrollPane.setHorizontalScrollBarPolicy(
-                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        this.scrollPane.setVerticalScrollBarPolicy(
-                ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        this.helpContainer.add(this.scrollPane, BorderLayout.CENTER);
-        this.updateHelp(pictures, descriptions);
+    public GraphicalHelpViewer(final BufferedImageIcon[] pictures, final String[] descriptions) {
+	this.helpContainer = new Container();
+	this.helpContainer.setLayout(new BorderLayout());
+	this.choiceContainer = new Container();
+	this.scrollPane = new JScrollPane(this.choiceContainer);
+	this.scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	this.scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+	this.helpContainer.add(this.scrollPane, BorderLayout.CENTER);
+	this.updateHelp(pictures, descriptions);
     }
 
     // Methods
     public Container getHelp() {
-        return this.helpContainer;
+	return this.helpContainer;
     }
 
-    private void updateHelp(final BufferedImageIcon[] newImages,
-            final String[] newNames) {
-        this.choices = newImages;
-        this.choiceNames = newNames;
-        this.choiceContainer.removeAll();
-        this.choiceContainer.setLayout(new GridLayout(this.choices.length, 1));
-        this.choiceArray = new JLabel[this.choices.length];
-        for (int x = 0; x < this.choices.length; x++) {
-            this.choiceArray[x] = new JLabel(this.choiceNames[x],
-                    this.choices[x], SwingConstants.LEFT);
-            this.choiceContainer.add(this.choiceArray[x]);
-        }
+    private void updateHelp(final BufferedImageIcon[] newImages, final String[] newNames) {
+	this.choices = newImages;
+	this.choiceNames = newNames;
+	this.choiceContainer.removeAll();
+	this.choiceContainer.setLayout(new GridLayout(this.choices.length, 1));
+	this.choiceArray = new JLabel[this.choices.length];
+	for (int x = 0; x < this.choices.length; x++) {
+	    this.choiceArray[x] = new JLabel(this.choiceNames[x], this.choices[x], SwingConstants.LEFT);
+	    this.choiceContainer.add(this.choiceArray[x]);
+	}
     }
 
     public void setHelpSize(final int horz, final int vert) {
-        this.helpContainer.setPreferredSize(new Dimension(horz, vert));
-        this.scrollPane.setPreferredSize(new Dimension(horz, vert));
+	this.helpContainer.setPreferredSize(new Dimension(horz, vert));
+	this.scrollPane.setPreferredSize(new Dimension(horz, vert));
     }
 }

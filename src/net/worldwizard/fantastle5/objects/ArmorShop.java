@@ -24,31 +24,31 @@ import net.worldwizard.fantastle5.generic.GenericDungeonObject;
 public class ArmorShop extends GenericDungeonObject {
     // Constructors
     public ArmorShop() {
-        super(false);
+	super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-        Fantastle5.getApplication().getArmor().showShop();
+	Fantastle5.getApplication().getArmor().showShop();
     }
 
     @Override
     public String getName() {
-        return "Armor Shop";
+	return "Armor Shop";
     }
 
     @Override
     public String getPluralName() {
-        return "Armor Shops";
+	return "Armor Shops";
     }
 
     @Override
     public String getDescription() {
-        return "Armor Shops sell protective armor.";
+	return "Armor Shops sell protective armor.";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 1;
+	return (byte) 1;
     }
 }

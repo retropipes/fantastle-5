@@ -26,40 +26,38 @@ import net.worldwizard.fantastle5.generic.MazeObject;
 public class Teleport extends GenericTeleport {
     // Constructors
     public Teleport() {
-        super(0, 0, 0, 0);
+	super(0, 0, 0, 0);
     }
 
-    public Teleport(final int destinationRow, final int destinationColumn,
-            final int destinationFloor, final int destinationLevel) {
-        super(destinationRow, destinationColumn, destinationFloor,
-                destinationLevel);
+    public Teleport(final int destinationRow, final int destinationColumn, final int destinationFloor,
+	    final int destinationLevel) {
+	super(destinationRow, destinationColumn, destinationFloor, destinationLevel);
     }
 
     @Override
     public String getName() {
-        return "Teleport";
+	return "Teleport";
     }
 
     @Override
     public String getPluralName() {
-        return "Teleports";
+	return "Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        final MazeEditor me = Fantastle5.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
-        return mo;
+	final MazeEditor me = Fantastle5.getApplication().getEditor();
+	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
+	return mo;
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 8;
+	return (byte) 8;
     }
 
     @Override
     public String getDescription() {
-        return "Teleports send you to a predetermined destination when stepped on.";
+	return "Teleports send you to a predetermined destination when stepped on.";
     }
 }

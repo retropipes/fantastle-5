@@ -26,26 +26,21 @@ import net.worldwizard.fantastle5.game.ObjectInventory;
 
 public abstract class GenericInvisibleTeleport extends GenericTeleport {
     // Constructors
-    protected GenericInvisibleTeleport(final int destinationRow,
-            final int destinationColumn, final int destinationFloor,
-            final int destinationLevel) {
-        super(destinationRow, destinationColumn, destinationFloor,
-                destinationLevel);
+    protected GenericInvisibleTeleport(final int destinationRow, final int destinationColumn,
+	    final int destinationFloor, final int destinationLevel) {
+	super(destinationRow, destinationColumn, destinationFloor, destinationLevel);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final Application app = Fantastle5.getApplication();
-        app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
-                this.getDestinationColumn(), this.getDestinationFloor(),
-                this.getDestinationLevel());
-        Messager.showMessage("Invisible Teleport!");
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveSuccessSound();
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final Application app = Fantastle5.getApplication();
+	app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor(), this.getDestinationLevel());
+	Messager.showMessage("Invisible Teleport!");
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveSuccessSound();
+	}
     }
 
     @Override
@@ -53,13 +48,13 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
 
     @Override
     public byte getGroupID() {
-        return (byte) 15;
+	return (byte) 15;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INVISIBLE_TELEPORT);
-        this.type.set(TypeConstants.TYPE_TELEPORT);
+	this.type.set(TypeConstants.TYPE_INVISIBLE_TELEPORT);
+	this.type.set(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override

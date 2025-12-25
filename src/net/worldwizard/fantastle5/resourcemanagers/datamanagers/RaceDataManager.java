@@ -23,23 +23,21 @@ import net.worldwizard.io.ResourceStreamReader;
 
 public class RaceDataManager {
     public static int[] getRaceData(final int c) {
-        final String name = RaceConstants.RACE_NAMES[c].toLowerCase();
-        try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                RaceDataManager.class.getResourceAsStream(
-                        "/net/worldwizard/fantastle5/resources/data/race/"
-                                + name + ".dat"))) {
-            // Fetch data
-            final int[] rawData = new int[RaceConstants.RACE_ATTRIBUTE_COUNT];
-            for (int x = 0; x < rawData.length; x++) {
-                try {
-                    rawData[x] = rsr.readInt();
-                } catch (final NumberFormatException nfe) {
-                    rawData[x] = 0;
-                }
-            }
-            return rawData;
-        } catch (final Exception e) {
-            return null;
-        }
+	final String name = RaceConstants.RACE_NAMES[c].toLowerCase();
+	try (final ResourceStreamReader rsr = new ResourceStreamReader(RaceDataManager.class
+		.getResourceAsStream("/net/worldwizard/fantastle5/resources/data/race/" + name + ".dat"))) {
+	    // Fetch data
+	    final int[] rawData = new int[RaceConstants.RACE_ATTRIBUTE_COUNT];
+	    for (int x = 0; x < rawData.length; x++) {
+		try {
+		    rawData[x] = rsr.readInt();
+		} catch (final NumberFormatException nfe) {
+		    rawData[x] = 0;
+		}
+	    }
+	    return rawData;
+	} catch (final Exception e) {
+	    return null;
+	}
     }
 }

@@ -23,6 +23,6 @@ import net.worldwizard.fantastle5.generic.GenericTransientObject;
 public class IceArrow extends GenericTransientObject {
     // Constructors
     public IceArrow() {
-        super("Ice Arrow");
+	super("Ice Arrow");
     }
 }

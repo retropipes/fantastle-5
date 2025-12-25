@@ -23,26 +23,26 @@ import net.worldwizard.fantastle5.generic.GenericWall;
 public class Wall extends GenericWall {
     // Constructors
     public Wall() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Wall";
+	return "Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Walls";
+	return "Walls";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 8;
+	return (byte) 8;
     }
 
     @Override
     public String getDescription() {
-        return "Walls are impassable - you'll need to go around them.";
+	return "Walls are impassable - you'll need to go around them.";
     }
 }

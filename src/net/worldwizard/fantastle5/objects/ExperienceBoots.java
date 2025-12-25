@@ -30,41 +30,39 @@ public class ExperienceBoots extends GenericBoots {
 
     // Constructors
     public ExperienceBoots() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Experience Boots";
+	return "Experience Boots";
     }
 
     @Override
     public String getPluralName() {
-        return "Pairs of Experience Boots";
+	return "Pairs of Experience Boots";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 9;
+	return (byte) 9;
     }
 
     @Override
     public String getDescription() {
-        return "Experience Boots give you experience as you walk. Note that you can only wear one pair of boots at once.";
+	return "Experience Boots give you experience as you walk. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     public void stepAction() {
-        final PlayerCharacter playerCharacter = PCManager.getPlayer();
-        playerCharacter.offsetExperience(ExperienceBoots.EXP_AMOUNT);
-        Fantastle5.getApplication().getGameManager().getScoreTracker()
-                .incrementScore();
-        // Level Up Check
-        if (playerCharacter.checkLevelUp()) {
-            playerCharacter.levelUp();
-            Fantastle5.getApplication().getGameManager().keepNextMessage();
-            Messager.showMessage(
-                    "You reached level " + playerCharacter.getLevel() + ".");
-        }
+	final PlayerCharacter playerCharacter = PCManager.getPlayer();
+	playerCharacter.offsetExperience(ExperienceBoots.EXP_AMOUNT);
+	Fantastle5.getApplication().getGameManager().getScoreTracker().incrementScore();
+	// Level Up Check
+	if (playerCharacter.checkLevelUp()) {
+	    playerCharacter.levelUp();
+	    Fantastle5.getApplication().getGameManager().keepNextMessage();
+	    Messager.showMessage("You reached level " + playerCharacter.getLevel() + ".");
+	}
     }
 }

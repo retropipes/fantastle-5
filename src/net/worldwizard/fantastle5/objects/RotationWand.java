@@ -32,78 +32,72 @@ public class RotationWand extends GenericWand {
 
     // Constructors
     public RotationWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Rotation Wand";
+	return "Rotation Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Rotation Wands";
+	return "Rotation Wands";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 8;
+	return (byte) 8;
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z, final int w) {
-        this.useAction(null, x, y, z, w);
+	this.useAction(null, x, y, z, w);
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z, final int w) {
-        final Application app = Fantastle5.getApplication();
-        app.getGameManager().setRemoteAction(x, y, z, w);
-        int r = 1;
-        final String[] rChoices = new String[] { "1", "2", "3" };
-        final String rres = Messager.showInputDialog("Rotation Radius:",
-                "Fantastle", rChoices, rChoices[r - 1]);
-        try {
-            r = Integer.parseInt(rres);
-        } catch (final NumberFormatException nf) {
-            // Ignore
-        }
-        boolean d = RotationWand.CLOCKWISE;
-        int di;
-        if (d) {
-            di = 0;
-        } else {
-            di = 1;
-        }
-        final String[] dChoices = new String[] { "Clockwise",
-                "Counterclockwise" };
-        final String dres = Messager.showInputDialog("Rotation Direction:",
-                "Fantastle", dChoices, dChoices[di]);
-        if (dres.equals(dChoices[0])) {
-            d = RotationWand.CLOCKWISE;
-        } else {
-            d = RotationWand.COUNTERCLOCKWISE;
-        }
-        if (d) {
-            Fantastle5.getApplication().getGameManager().doClockwiseRotate(r);
-        } else {
-            Fantastle5.getApplication().getGameManager()
-                    .doCounterclockwiseRotate(r);
-        }
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playRotatedSound();
-        }
+    public void useAction(final MazeObject mo, final int x, final int y, final int z, final int w) {
+	final Application app = Fantastle5.getApplication();
+	app.getGameManager().setRemoteAction(x, y, z, w);
+	int r = 1;
+	final String[] rChoices = new String[] { "1", "2", "3" };
+	final String rres = Messager.showInputDialog("Rotation Radius:", "Fantastle", rChoices, rChoices[r - 1]);
+	try {
+	    r = Integer.parseInt(rres);
+	} catch (final NumberFormatException nf) {
+	    // Ignore
+	}
+	boolean d = RotationWand.CLOCKWISE;
+	int di;
+	if (d) {
+	    di = 0;
+	} else {
+	    di = 1;
+	}
+	final String[] dChoices = new String[] { "Clockwise", "Counterclockwise" };
+	final String dres = Messager.showInputDialog("Rotation Direction:", "Fantastle", dChoices, dChoices[di]);
+	if (dres.equals(dChoices[0])) {
+	    d = RotationWand.CLOCKWISE;
+	} else {
+	    d = RotationWand.COUNTERCLOCKWISE;
+	}
+	if (d) {
+	    Fantastle5.getApplication().getGameManager().doClockwiseRotate(r);
+	} else {
+	    Fantastle5.getApplication().getGameManager().doCounterclockwiseRotate(r);
+	}
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playRotatedSound();
+	}
     }
 
     @Override
     public String getUseSoundName() {
-        return "rotated";
+	return "rotated";
     }
 
     @Override
     public String getDescription() {
-        return "Rotation Wands will rotate part of the maze. You can choose the area of effect and the direction.";
+	return "Rotation Wands will rotate part of the maze. You can choose the area of effect and the direction.";
     }
 }

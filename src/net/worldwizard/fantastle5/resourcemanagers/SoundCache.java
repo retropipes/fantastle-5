@@ -28,32 +28,31 @@ public class SoundCache {
 
     // Methods
     public static Sound getCachedSound(final String name) {
-        if (!SoundCache.cacheCreated) {
-            SoundCache.createCache();
-        }
-        for (int x = 0; x < SoundCache.nameCache.length; x++) {
-            if (name.equals(SoundCache.nameCache[x])) {
-                return SoundCache.cache[x];
-            }
-        }
-        return null;
+	if (!SoundCache.cacheCreated) {
+	    SoundCache.createCache();
+	}
+	for (int x = 0; x < SoundCache.nameCache.length; x++) {
+	    if (name.equals(SoundCache.nameCache[x])) {
+		return SoundCache.cache[x];
+	    }
+	}
+	return null;
     }
 
     private static void createCache() {
-        if (!SoundCache.cacheCreated) {
-            // Create the cache
-            SoundCache.nameCache = SoundList.getAllSoundNames();
-            SoundCache.cache = new Sound[SoundCache.nameCache.length];
-            for (int x = 0; x < SoundCache.nameCache.length; x++) {
-                SoundCache.cache[x] = SoundManager
-                        .getUncachedSound(SoundCache.nameCache[x]);
-            }
-            SoundCache.cacheCreated = true;
-        }
+	if (!SoundCache.cacheCreated) {
+	    // Create the cache
+	    SoundCache.nameCache = SoundList.getAllSoundNames();
+	    SoundCache.cache = new Sound[SoundCache.nameCache.length];
+	    for (int x = 0; x < SoundCache.nameCache.length; x++) {
+		SoundCache.cache[x] = SoundManager.getUncachedSound(SoundCache.nameCache[x]);
+	    }
+	    SoundCache.cacheCreated = true;
+	}
     }
 
     public static void recreateCache() {
-        SoundCache.cacheCreated = false;
-        SoundCache.createCache();
+	SoundCache.cacheCreated = false;
+	SoundCache.createCache();
     }
 }

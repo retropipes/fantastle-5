@@ -28,62 +28,58 @@ import net.worldwizard.fantastle5.generic.GenericField;
 public class Lava extends GenericField {
     // Constructors
     public Lava() {
-        super(new FireBoots());
+	super(new FireBoots());
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final Application app = Fantastle5.getApplication();
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveSuccessSound();
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final Application app = Fantastle5.getApplication();
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveSuccessSound();
+	}
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        final Application app = Fantastle5.getApplication();
-        Messager.showMessage("You'll burn");
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveFailedSound();
-        }
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final Application app = Fantastle5.getApplication();
+	Messager.showMessage("You'll burn");
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveFailedSound();
+	}
     }
 
     @Override
     public String getName() {
-        return "Lava";
+	return "Lava";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Lava";
+	return "Squares of Lava";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 3;
+	return (byte) 3;
     }
 
     @Override
     public String getMoveFailedSoundName() {
-        return "lava";
+	return "lava";
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "walklava";
+	return "walklava";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Lava is too hot to walk on without Fire Boots.";
+	return "Lava is too hot to walk on without Fire Boots.";
     }
 }

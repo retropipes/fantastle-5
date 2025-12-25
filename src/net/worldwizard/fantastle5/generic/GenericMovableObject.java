@@ -26,32 +26,28 @@ import net.worldwizard.fantastle5.maze.Maze;
 
 public abstract class GenericMovableObject extends MazeObject {
     // Constructors
-    protected GenericMovableObject(final boolean pushable,
-            final boolean pullable) {
-        super(true, pushable, false, false, pullable, false, false, true, false,
-                0);
+    protected GenericMovableObject(final boolean pushable, final boolean pullable) {
+	super(true, pushable, false, false, pullable, false, false, true, false, 0);
     }
 
     @Override
-    public void pushAction(final ObjectInventory inv, final MazeObject mo,
-            final int x, final int y, final int pushX, final int pushY) {
-        final Application app = Fantastle5.getApplication();
-        app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playPushSuccessSound();
-        }
+    public void pushAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
+	    final int pushY) {
+	final Application app = Fantastle5.getApplication();
+	app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playPushSuccessSound();
+	}
     }
 
     @Override
-    public void pullAction(final ObjectInventory inv, final MazeObject mo,
-            final int x, final int y, final int pullX, final int pullY) {
-        final Application app = Fantastle5.getApplication();
-        app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playPullSuccessSound();
-        }
+    public void pullAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pullX,
+	    final int pullY) {
+	final Application app = Fantastle5.getApplication();
+	app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playPullSuccessSound();
+	}
     }
 
     @Override
@@ -59,26 +55,26 @@ public abstract class GenericMovableObject extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Maze.LAYER_OBJECT;
+	return Maze.LAYER_OBJECT;
     }
 
     @Override
     public byte getGroupID() {
-        return (byte) 21;
+	return (byte) 21;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_MOVABLE);
+	this.type.set(TypeConstants.TYPE_MOVABLE);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+	return MazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 }

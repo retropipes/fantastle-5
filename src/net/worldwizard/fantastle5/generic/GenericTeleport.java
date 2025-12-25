@@ -33,111 +33,106 @@ public abstract class GenericTeleport extends MazeObject {
     private int destLevel;
 
     // Constructors
-    protected GenericTeleport(final int destinationRow,
-            final int destinationColumn, final int destinationFloor,
-            final int destinationLevel) {
-        super(false);
-        this.destRow = destinationRow;
-        this.destCol = destinationColumn;
-        this.destFloor = destinationFloor;
-        this.destLevel = destinationLevel;
+    protected GenericTeleport(final int destinationRow, final int destinationColumn, final int destinationFloor,
+	    final int destinationLevel) {
+	super(false);
+	this.destRow = destinationRow;
+	this.destCol = destinationColumn;
+	this.destFloor = destinationFloor;
+	this.destLevel = destinationLevel;
     }
 
     protected GenericTeleport(final boolean doesAcceptPushInto) {
-        super(false, false, doesAcceptPushInto, false, false, false, false,
-                true, false, 0);
+	super(false, false, doesAcceptPushInto, false, false, false, false, true, false, 0);
     }
 
     @Override
     public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        final GenericTeleport other = (GenericTeleport) obj;
-        if (this.destRow != other.destRow) {
-            return false;
-        }
-        if (this.destCol != other.destCol) {
-            return false;
-        }
-        if (this.destFloor != other.destFloor) {
-            return false;
-        }
-        if (this.destLevel != other.destLevel) {
-            return false;
-        }
-        return true;
+	if (obj == null) {
+	    return false;
+	}
+	if (this.getClass() != obj.getClass()) {
+	    return false;
+	}
+	final GenericTeleport other = (GenericTeleport) obj;
+	if (this.destRow != other.destRow) {
+	    return false;
+	}
+	if (this.destCol != other.destCol) {
+	    return false;
+	}
+	if (this.destFloor != other.destFloor) {
+	    return false;
+	}
+	if (this.destLevel != other.destLevel) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + this.destRow;
-        hash = 67 * hash + this.destCol;
-        hash = 67 * hash + this.destFloor;
-        hash = 67 * hash + this.destLevel;
-        return hash;
+	int hash = 7;
+	hash = 67 * hash + this.destRow;
+	hash = 67 * hash + this.destCol;
+	hash = 67 * hash + this.destFloor;
+	hash = 67 * hash + this.destLevel;
+	return hash;
     }
 
     @Override
     public GenericTeleport clone() {
-        final GenericTeleport copy = (GenericTeleport) super.clone();
-        copy.destCol = this.destCol;
-        copy.destFloor = this.destFloor;
-        copy.destLevel = this.destLevel;
-        copy.destRow = this.destRow;
-        return copy;
+	final GenericTeleport copy = (GenericTeleport) super.clone();
+	copy.destCol = this.destCol;
+	copy.destFloor = this.destFloor;
+	copy.destLevel = this.destLevel;
+	copy.destRow = this.destRow;
+	return copy;
     }
 
     // Accessor methods
     public int getDestinationRow() {
-        return this.destRow;
+	return this.destRow;
     }
 
     public int getDestinationColumn() {
-        return this.destCol;
+	return this.destCol;
     }
 
     public int getDestinationFloor() {
-        return this.destFloor;
+	return this.destFloor;
     }
 
     public int getDestinationLevel() {
-        return this.destLevel;
+	return this.destLevel;
     }
 
     // Transformer methods
     public void setDestinationRow(final int destinationRow) {
-        this.destRow = destinationRow;
+	this.destRow = destinationRow;
     }
 
     public void setDestinationColumn(final int destinationColumn) {
-        this.destCol = destinationColumn;
+	this.destCol = destinationColumn;
     }
 
     public void setDestinationFloor(final int destinationFloor) {
-        this.destFloor = destinationFloor;
+	this.destFloor = destinationFloor;
     }
 
     public void setDestinationLevel(final int destinationLevel) {
-        this.destLevel = destinationLevel;
+	this.destLevel = destinationLevel;
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final Application app = Fantastle5.getApplication();
-        app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
-                this.getDestinationColumn(), this.getDestinationFloor(),
-                this.getDestinationLevel());
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveSuccessSound();
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final Application app = Fantastle5.getApplication();
+	app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor(), this.getDestinationLevel());
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveSuccessSound();
+	}
     }
 
     @Override
@@ -145,24 +140,23 @@ public abstract class GenericTeleport extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Maze.LAYER_OBJECT;
+	return Maze.LAYER_OBJECT;
     }
 
     @Override
     public byte getGroupID() {
-        return (byte) 14;
+	return (byte) 14;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TELEPORT);
+	this.type.set(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override
     public void editorProbeHook() {
-        Messager.showMessage(this.getName() + ": Destination ("
-                + (this.destCol + 1) + "," + (this.destRow + 1) + ","
-                + (this.destFloor + 1) + "," + (this.destLevel + 1) + ")");
+	Messager.showMessage(this.getName() + ": Destination (" + (this.destCol + 1) + "," + (this.destRow + 1) + ","
+		+ (this.destFloor + 1) + "," + (this.destLevel + 1) + ")");
     }
 
     @Override
@@ -170,57 +164,57 @@ public abstract class GenericTeleport extends MazeObject {
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "teleport";
+	return "teleport";
     }
 
     @Override
     public boolean defersSetProperties() {
-        return true;
+	return true;
     }
 
     @Override
     public boolean hasAdditionalProperties() {
-        return true;
+	return true;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        switch (propID) {
-            case 1:
-                return this.destRow;
-            case 2:
-                return this.destCol;
-            case 3:
-                return this.destFloor;
-            case 4:
-                return this.destLevel;
-            default:
-                return MazeObject.DEFAULT_CUSTOM_VALUE;
-        }
+	switch (propID) {
+	case 1:
+	    return this.destRow;
+	case 2:
+	    return this.destCol;
+	case 3:
+	    return this.destFloor;
+	case 4:
+	    return this.destLevel;
+	default:
+	    return MazeObject.DEFAULT_CUSTOM_VALUE;
+	}
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        switch (propID) {
-            case 1:
-                this.destRow = value;
-                break;
-            case 2:
-                this.destCol = value;
-                break;
-            case 3:
-                this.destFloor = value;
-                break;
-            case 4:
-                this.destLevel = value;
-                break;
-            default:
-                break;
-        }
+	switch (propID) {
+	case 1:
+	    this.destRow = value;
+	    break;
+	case 2:
+	    this.destCol = value;
+	    break;
+	case 3:
+	    this.destFloor = value;
+	    break;
+	case 4:
+	    this.destLevel = value;
+	    break;
+	default:
+	    break;
+	}
     }
 
     @Override
     public int getCustomFormat() {
-        return 4;
+	return 4;
     }
 }

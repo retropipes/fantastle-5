@@ -34,63 +34,59 @@ public class SavedScoreManager extends ScoreManager {
 
     // Constructors
     public SavedScoreManager(final String scoresFile) {
-        super();
-        this.scoresFilename = scoresFile;
-        try {
-            this.readScoresFile();
-        } catch (final IOException io) {
-            // Do nothing
-        }
+	super();
+	this.scoresFilename = scoresFile;
+	try {
+	    this.readScoresFile();
+	} catch (final IOException io) {
+	    // Do nothing
+	}
     }
 
-    public SavedScoreManager(final int length, final boolean sortOrder,
-            final long startingScore, final boolean showFailedMessage,
-            final String customTitle, final String customUnit,
-            final String scoresFile) {
-        super(length, sortOrder, startingScore, showFailedMessage, customTitle,
-                customUnit);
-        this.scoresFilename = scoresFile;
-        try {
-            this.readScoresFile();
-        } catch (final IOException io) {
-            // Do nothing
-        }
+    public SavedScoreManager(final int length, final boolean sortOrder, final long startingScore,
+	    final boolean showFailedMessage, final String customTitle, final String customUnit,
+	    final String scoresFile) {
+	super(length, sortOrder, startingScore, showFailedMessage, customTitle, customUnit);
+	this.scoresFilename = scoresFile;
+	try {
+	    this.readScoresFile();
+	} catch (final IOException io) {
+	    // Do nothing
+	}
     }
 
     // Methods
     @Override
     public boolean addScore(final long newScore) {
-        final boolean success = super.addScore(newScore);
-        try {
-            this.writeScoresFile();
-        } catch (final IOException io) {
-            // Do nothing
-        }
-        return success;
+	final boolean success = super.addScore(newScore);
+	try {
+	    this.writeScoresFile();
+	} catch (final IOException io) {
+	    // Do nothing
+	}
+	return success;
     }
 
     @Override
     public boolean addScore(final long newScore, final String newName) {
-        final boolean success = super.addScore(newScore, newName);
-        try {
-            this.writeScoresFile();
-        } catch (final IOException io) {
-            // Do nothing
-        }
-        return success;
+	final boolean success = super.addScore(newScore, newName);
+	try {
+	    this.writeScoresFile();
+	} catch (final IOException io) {
+	    // Do nothing
+	}
+	return success;
     }
 
     private void readScoresFile() throws IOException {
-        try (final BufferedReader br = new BufferedReader(
-                new FileReader(this.scoresFilename))) {
-            this.table = SortedScoreTable.readSortedScoreTable(br);
-        }
+	try (final BufferedReader br = new BufferedReader(new FileReader(this.scoresFilename))) {
+	    this.table = SortedScoreTable.readSortedScoreTable(br);
+	}
     }
 
     private void writeScoresFile() throws IOException {
-        try (final BufferedWriter bw = new BufferedWriter(
-                new FileWriter(this.scoresFilename))) {
-            this.table.writeSortedScoreTable(bw);
-        }
+	try (final BufferedWriter bw = new BufferedWriter(new FileWriter(this.scoresFilename))) {
+	    this.table.writeSortedScoreTable(bw);
+	}
     }
 }

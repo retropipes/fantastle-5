@@ -27,40 +27,38 @@ import net.worldwizard.fantastle5.generic.GenericInfiniteLock;
 public class TabletSlot extends GenericInfiniteLock {
     // Constructors
     public TabletSlot() {
-        super(new Tablet());
+	super(new Tablet());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Messager.showMessage("You need a tablet");
-        }
-        // Play move failed sound, if it's enabled
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveFailedSound();
-        }
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Messager.showMessage("You need a tablet");
+	}
+	// Play move failed sound, if it's enabled
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveFailedSound();
+	}
     }
 
     @Override
     public String getName() {
-        return "Tablet Slot";
+	return "Tablet Slot";
     }
 
     @Override
     public String getPluralName() {
-        return "Tablet Slots";
+	return "Tablet Slots";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 27;
+	return (byte) 27;
     }
 
     @Override
     public String getDescription() {
-        return "Tablet Slots disappear when filled with a Tablet.";
+	return "Tablet Slots disappear when filled with a Tablet.";
     }
 }

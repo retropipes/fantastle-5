@@ -29,37 +29,35 @@ import net.worldwizard.fantastle5.resourcemanagers.SoundManager;
 public class HarderTrap extends GenericTrap {
     // Constructors
     public HarderTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Harder Trap";
+	return "Harder Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Harder Traps";
+	return "Harder Traps";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 13;
+	return (byte) 13;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Messager.showMessage("The monsters get stronger...");
-        PCManager.getPlayer().incrementMonsterLevel();
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            SoundManager.playSoundAsynchronously("harder");
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Messager.showMessage("The monsters get stronger...");
+	PCManager.getPlayer().incrementMonsterLevel();
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    SoundManager.playSoundAsynchronously("harder");
+	}
     }
 
     @Override
     public String getDescription() {
-        return "Harder Traps make the monsters harder to defeat.";
+	return "Harder Traps make the monsters harder to defeat.";
     }
 }

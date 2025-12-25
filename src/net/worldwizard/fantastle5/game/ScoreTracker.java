@@ -40,140 +40,136 @@ public class ScoreTracker {
 
     // Constructors
     public ScoreTracker() {
-        this.scoresFile = "";
-        this.scoreValid = false;
-        this.score = 0L;
-        this.ssMgr = null;
+	this.scoresFile = "";
+	this.scoreValid = false;
+	this.score = 0L;
+	this.ssMgr = null;
     }
 
     // Methods
     public boolean checkScore() {
-        if (this.scoreValid) {
-            return this.ssMgr.checkScore(this.score);
-        } else {
-            return false;
-        }
+	if (this.scoreValid) {
+	    return this.ssMgr.checkScore(this.score);
+	} else {
+	    return false;
+	}
     }
 
     public void commitScore() {
-        if (this.scoreValid) {
-            final boolean result = this.ssMgr.addScore(this.score);
-            if (result) {
-                this.ssMgr.viewTable();
-            }
-        }
+	if (this.scoreValid) {
+	    final boolean result = this.ssMgr.addScore(this.score);
+	    if (result) {
+		this.ssMgr.viewTable();
+	    }
+	}
     }
 
     public void invalidateScore() {
-        this.scoreValid = false;
+	this.scoreValid = false;
     }
 
     public void resetScore(final String filename) {
-        this.setScoreFile(filename);
-        this.score = 0L;
+	this.setScoreFile(filename);
+	this.score = 0L;
     }
 
     public void setScoreFile(final String filename) {
-        // Check validity
-        if (this.scoreValid) {
-            // Check filename argument
-            if (filename != null) {
-                if (filename.equals("")) {
-                    throw new IllegalArgumentException(
-                            "Filename cannot be empty!");
-                }
-            } else {
-                throw new IllegalArgumentException("Filename cannot be null!");
-            }
-            // Make sure the needed directories exist first
-            final File sf = ScoreTracker.getScoresFile(filename);
-            final File parent = new File(sf.getParent());
-            if (!parent.exists()) {
-                parent.mkdirs();
-            }
-            this.scoresFile = sf.getAbsolutePath();
-            this.ssMgr = new SavedScoreManager(10,
-                    ScoreManager.SORT_ORDER_ASCENDING, 0L, true,
-                    "Fantastle Scores", "points", this.scoresFile);
-        }
+	// Check validity
+	if (this.scoreValid) {
+	    // Check filename argument
+	    if (filename != null) {
+		if (filename.equals("")) {
+		    throw new IllegalArgumentException("Filename cannot be empty!");
+		}
+	    } else {
+		throw new IllegalArgumentException("Filename cannot be null!");
+	    }
+	    // Make sure the needed directories exist first
+	    final File sf = ScoreTracker.getScoresFile(filename);
+	    final File parent = new File(sf.getParent());
+	    if (!parent.exists()) {
+		parent.mkdirs();
+	    }
+	    this.scoresFile = sf.getAbsolutePath();
+	    this.ssMgr = new SavedScoreManager(10, ScoreManager.SORT_ORDER_ASCENDING, 0L, true, "Fantastle Scores",
+		    "points", this.scoresFile);
+	}
     }
 
     public void incrementScore() {
-        this.score++;
+	this.score++;
     }
 
     public void deductStep() {
-        this.score--;
+	this.score--;
     }
 
     public void updateScore(final long increment) {
-        this.score += increment;
+	this.score += increment;
     }
 
     public void validateScore() {
-        this.scoreValid = true;
+	this.scoreValid = true;
     }
 
     public long getScore() {
-        return this.score;
+	return this.score;
     }
 
     public void setScore(final long newScore) {
-        this.score = newScore;
+	this.score = newScore;
     }
 
     public String getScoreUnits() {
-        return "points";
+	return "points";
     }
 
     public void showCurrentScore() {
-        if (this.scoreValid) {
-            Messager.showDialog(
-                    "Your current score: " + this.score + " points");
-        } else {
-            Messager.showDialog(
-                    "The current score is not available at this time.");
-        }
+	if (this.scoreValid) {
+	    Messager.showDialog("Your current score: " + this.score + " points");
+	} else {
+	    Messager.showDialog("The current score is not available at this time.");
+	}
     }
 
     public void showScoreTable() {
-        this.ssMgr.viewTable();
+	this.ssMgr.viewTable();
     }
 
     private static String getScoreDirPrefix() {
-        final String osName = System.getProperty("os.name");
-        if (osName.indexOf("Mac OS X") != -1) {
-            // Mac OS X
-            return System.getenv(ScoreTracker.MAC_PREFIX);
-        } else if (osName.indexOf("Windows") != -1) {
-            // Windows
-            return System.getenv(ScoreTracker.WIN_PREFIX);
-        } else {
-            // Other - assume UNIX-like
-            return System.getenv(ScoreTracker.UNIX_PREFIX);
-        }
+	final String osName = System.getProperty("os.name");
+	if (osName.indexOf("Mac OS X") != -1) {
+	    // Mac OS X
+	    return System.getenv(ScoreTracker.MAC_PREFIX);
+	} else if (osName.indexOf("Windows") != -1) {
+	    // Windows
+	    return System.getenv(ScoreTracker.WIN_PREFIX);
+	} else {
+	    // Other - assume UNIX-like
+	    return System.getenv(ScoreTracker.UNIX_PREFIX);
+	}
     }
 
     private static String getScoreDirectory() {
-        final String osName = System.getProperty("os.name");
-        if (osName.indexOf("Mac OS X") != -1) {
-            // Mac OS X
-            return ScoreTracker.MAC_DIR;
-        } else if (osName.indexOf("Windows") != -1) {
-            // Windows
-            return ScoreTracker.WIN_DIR;
-        } else {
-            // Other - assume UNIX-like
-            return ScoreTracker.UNIX_DIR;
-        }
+	final String osName = System.getProperty("os.name");
+	if (osName.indexOf("Mac OS X") != -1) {
+	    // Mac OS X
+	    return ScoreTracker.MAC_DIR;
+	} else if (osName.indexOf("Windows") != -1) {
+	    // Windows
+	    return ScoreTracker.WIN_DIR;
+	} else {
+	    // Other - assume UNIX-like
+	    return ScoreTracker.UNIX_DIR;
+	}
     }
 
     private static File getScoresFile(final String filename) {
-        final StringBuilder b = new StringBuilder();
-        b.append(ScoreTracker.getScoreDirPrefix());
-        b.append(ScoreTracker.getScoreDirectory());
-        b.append(filename);
-        b.append(Extension.getScoresExtensionWithPeriod());
-        return new File(b.toString());
+	final StringBuilder b = new StringBuilder();
+	b.append(ScoreTracker.getScoreDirPrefix());
+	b.append(ScoreTracker.getScoreDirectory());
+	b.append(filename);
+	b.append(Extension.getScoresExtensionWithPeriod());
+	return new File(b.toString());
     }
 }

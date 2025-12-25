@@ -65,220 +65,216 @@ public class Application {
 
     // Constructors
     public Application() {
-        this.objects = new MazeObjectList();
-        this.combatItems = new CombatItemList();
+	this.objects = new MazeObjectList();
+	this.combatItems = new CombatItemList();
     }
 
     // Methods
     void postConstruct() {
-        this.prefsMgr = new PreferencesManager();
-        this.about = new AboutDialog(this.getVersionString());
-        this.guiMgr = new GUIManager();
-        this.gameMgr = new GameManager();
-        this.mazeMgr = new MazeManager();
-        this.menuMgr = new MenuManager();
-        this.gHelpMgr = new GeneralHelpManager();
-        this.oHelpMgr = new ObjectHelpManager();
-        this.editor = new MazeEditor();
-        this.weapons = new Shop(ShopTypes.SHOP_TYPE_WEAPONS);
-        this.armor = new Shop(ShopTypes.SHOP_TYPE_ARMOR);
-        this.healer = new Shop(ShopTypes.SHOP_TYPE_HEALER);
-        this.bank = new Shop(ShopTypes.SHOP_TYPE_BANK);
-        this.regenerator = new Shop(ShopTypes.SHOP_TYPE_REGENERATOR);
-        this.spells = new Shop(ShopTypes.SHOP_TYPE_SPELLS);
-        this.items = new Shop(ShopTypes.SHOP_TYPE_ITEMS);
-        this.battle = new Battle();
-        this.bossBattle = new BossBattle();
-        this.bossFlag = false;
-        // Attempt to load extras
-        final Object extras = PluginLoader.loadPlugin("ExtrasPlugin");
-        PluginLoader.addPluginMenus(extras);
-        // Cache Micro Logo
-        this.microLogo = GraphicsManager.getMicroLogo();
+	this.prefsMgr = new PreferencesManager();
+	this.about = new AboutDialog(this.getVersionString());
+	this.guiMgr = new GUIManager();
+	this.gameMgr = new GameManager();
+	this.mazeMgr = new MazeManager();
+	this.menuMgr = new MenuManager();
+	this.gHelpMgr = new GeneralHelpManager();
+	this.oHelpMgr = new ObjectHelpManager();
+	this.editor = new MazeEditor();
+	this.weapons = new Shop(ShopTypes.SHOP_TYPE_WEAPONS);
+	this.armor = new Shop(ShopTypes.SHOP_TYPE_ARMOR);
+	this.healer = new Shop(ShopTypes.SHOP_TYPE_HEALER);
+	this.bank = new Shop(ShopTypes.SHOP_TYPE_BANK);
+	this.regenerator = new Shop(ShopTypes.SHOP_TYPE_REGENERATOR);
+	this.spells = new Shop(ShopTypes.SHOP_TYPE_SPELLS);
+	this.items = new Shop(ShopTypes.SHOP_TYPE_ITEMS);
+	this.battle = new Battle();
+	this.bossBattle = new BossBattle();
+	this.bossFlag = false;
+	// Attempt to load extras
+	final Object extras = PluginLoader.loadPlugin("ExtrasPlugin");
+	PluginLoader.addPluginMenus(extras);
+	// Cache Micro Logo
+	this.microLogo = GraphicsManager.getMicroLogo();
     }
 
     public void setInGUI(final boolean value) {
-        this.IN_GUI = value;
+	this.IN_GUI = value;
     }
 
     public void setInPrefs(final boolean value) {
-        this.IN_PREFS = value;
+	this.IN_PREFS = value;
     }
 
     public void setInGame(final boolean value) {
-        this.IN_GAME = value;
+	this.IN_GAME = value;
     }
 
     public int getMode() {
-        if (this.IN_PREFS) {
-            return Application.STATUS_PREFS;
-        } else if (this.IN_GUI) {
-            return Application.STATUS_GUI;
-        } else if (this.IN_GAME) {
-            return Application.STATUS_GAME;
-        } else {
-            return Application.STATUS_EDITOR;
-        }
+	if (this.IN_PREFS) {
+	    return Application.STATUS_PREFS;
+	} else if (this.IN_GUI) {
+	    return Application.STATUS_GUI;
+	} else if (this.IN_GAME) {
+	    return Application.STATUS_GAME;
+	} else {
+	    return Application.STATUS_EDITOR;
+	}
     }
 
     public int getFormerMode() {
-        if (this.IN_GUI) {
-            return Application.STATUS_GUI;
-        } else if (this.IN_GAME) {
-            return Application.STATUS_GAME;
-        } else {
-            return Application.STATUS_EDITOR;
-        }
+	if (this.IN_GUI) {
+	    return Application.STATUS_GUI;
+	} else if (this.IN_GAME) {
+	    return Application.STATUS_GAME;
+	} else {
+	    return Application.STATUS_EDITOR;
+	}
     }
 
     public MenuManager getMenuManager() {
-        return this.menuMgr;
+	return this.menuMgr;
     }
 
     public GUIManager getGUIManager() {
-        return this.guiMgr;
+	return this.guiMgr;
     }
 
     public PreferencesManager getPrefsManager() {
-        return this.prefsMgr;
+	return this.prefsMgr;
     }
 
     public void resetPreferences() {
-        this.prefsMgr.resetPrefs();
+	this.prefsMgr.resetPrefs();
     }
 
     public GameManager getGameManager() {
-        return this.gameMgr;
+	return this.gameMgr;
     }
 
     public MazeManager getMazeManager() {
-        return this.mazeMgr;
+	return this.mazeMgr;
     }
 
     public GeneralHelpManager getGeneralHelpManager() {
-        return this.gHelpMgr;
+	return this.gHelpMgr;
     }
 
     public ObjectHelpManager getObjectHelpManager() {
-        return this.oHelpMgr;
+	return this.oHelpMgr;
     }
 
     public void updateMicroLogo() {
-        // Cache Micro Logo
-        this.microLogo = GraphicsManager.getMicroLogo();
+	// Cache Micro Logo
+	this.microLogo = GraphicsManager.getMicroLogo();
     }
 
     public MazeEditor getEditor() {
-        return this.editor;
+	return this.editor;
     }
 
     public AboutDialog getAboutDialog() {
-        return this.about;
+	return this.about;
     }
 
     public Shop getArmor() {
-        return this.armor;
+	return this.armor;
     }
 
     public Shop getBank() {
-        return this.bank;
+	return this.bank;
     }
 
     public Shop getHealer() {
-        return this.healer;
+	return this.healer;
     }
 
     public Shop getItems() {
-        return this.items;
+	return this.items;
     }
 
     public Shop getRegenerator() {
-        return this.regenerator;
+	return this.regenerator;
     }
 
     public Shop getSpells() {
-        return this.spells;
+	return this.spells;
     }
 
     public Shop getWeapons() {
-        return this.weapons;
+	return this.weapons;
     }
 
     public Battle getBattle() {
-        if (PCManager.getPlayer().getLevel() == Boss.FIGHT_LEVEL) {
-            if (!this.bossFlag) {
-                this.battle.battleDone();
-                this.bossFlag = true;
-            }
-            return this.bossBattle;
-        } else {
-            this.bossFlag = false;
-            return this.battle;
-        }
+	if (PCManager.getPlayer().getLevel() == Boss.FIGHT_LEVEL) {
+	    if (!this.bossFlag) {
+		this.battle.battleDone();
+		this.bossFlag = true;
+	    }
+	    return this.bossBattle;
+	} else {
+	    this.bossFlag = false;
+	    return this.battle;
+	}
     }
 
     public BufferedImageIcon getMicroLogo() {
-        return this.microLogo;
+	return this.microLogo;
     }
 
     public void playHighScoreSound() {
-        if (this.prefsMgr.getSoundEnabled(PreferencesManager.SOUNDS_UI)) {
-            SoundManager.playSoundAsynchronously("highscor");
-        }
+	if (this.prefsMgr.getSoundEnabled(PreferencesManager.SOUNDS_UI)) {
+	    SoundManager.playSoundAsynchronously("highscor");
+	}
     }
 
     public void playLogoSound() {
-        if (this.prefsMgr.getSoundEnabled(PreferencesManager.SOUNDS_UI)) {
-            SoundManager.playSoundAsynchronously("logo");
-        }
+	if (this.prefsMgr.getSoundEnabled(PreferencesManager.SOUNDS_UI)) {
+	    SoundManager.playSoundAsynchronously("logo");
+	}
     }
 
     public void playStartSound() {
-        if (this.prefsMgr.getSoundEnabled(PreferencesManager.SOUNDS_UI)) {
-            SoundManager.playSoundAsynchronously("start");
-        }
+	if (this.prefsMgr.getSoundEnabled(PreferencesManager.SOUNDS_UI)) {
+	    SoundManager.playSoundAsynchronously("start");
+	}
     }
 
     private String getVersionString() {
-        if (this.isBetaModeEnabled()) {
-            return "" + Application.VERSION_MAJOR + "."
-                    + Application.VERSION_MINOR + "."
-                    + Application.VERSION_BUGFIX + "-dev"
-                    + Application.VERSION_BETA;
-        } else {
-            return "" + Application.VERSION_MAJOR + "."
-                    + Application.VERSION_MINOR + "."
-                    + Application.VERSION_BUGFIX;
-        }
+	if (this.isBetaModeEnabled()) {
+	    return "" + Application.VERSION_MAJOR + "." + Application.VERSION_MINOR + "." + Application.VERSION_BUGFIX
+		    + "-dev" + Application.VERSION_BETA;
+	} else {
+	    return "" + Application.VERSION_MAJOR + "." + Application.VERSION_MINOR + "." + Application.VERSION_BUGFIX;
+	}
     }
 
     public JFrame getOutputFrame() {
-        try {
-            if (this.getMode() == Application.STATUS_PREFS) {
-                return this.getPrefsManager().getPrefFrame();
-            } else if (Battle.isInBattle()) {
-                return this.getBattle().getBattleFrame();
-            } else if (this.getMode() == Application.STATUS_GUI) {
-                return this.getGUIManager().getGUIFrame();
-            } else if (this.getMode() == Application.STATUS_GAME) {
-                return this.getGameManager().getOutputFrame();
-            } else {
-                return this.getEditor().getOutputFrame();
-            }
-        } catch (final NullPointerException npe) {
-            return null;
-        }
+	try {
+	    if (this.getMode() == Application.STATUS_PREFS) {
+		return this.getPrefsManager().getPrefFrame();
+	    } else if (Battle.isInBattle()) {
+		return this.getBattle().getBattleFrame();
+	    } else if (this.getMode() == Application.STATUS_GUI) {
+		return this.getGUIManager().getGUIFrame();
+	    } else if (this.getMode() == Application.STATUS_GAME) {
+		return this.getGameManager().getOutputFrame();
+	    } else {
+		return this.getEditor().getOutputFrame();
+	    }
+	} catch (final NullPointerException npe) {
+	    return null;
+	}
     }
 
     public MazeObjectList getObjects() {
-        return this.objects;
+	return this.objects;
     }
 
     public CombatItemList getCombatItems() {
-        return this.combatItems;
+	return this.combatItems;
     }
 
     public boolean isBetaModeEnabled() {
-        return Application.VERSION_BETA > 0;
+	return Application.VERSION_BETA > 0;
     }
 }

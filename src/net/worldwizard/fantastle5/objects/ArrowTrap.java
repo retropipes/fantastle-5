@@ -25,40 +25,38 @@ import net.worldwizard.fantastle5.generic.GenericTrap;
 public class ArrowTrap extends GenericTrap {
     // Constructors
     public ArrowTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Arrow Trap";
+	return "Arrow Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Arrow Traps";
+	return "Arrow Traps";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 14;
+	return (byte) 14;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.playMoveSuccessSound();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.playMoveSuccessSound();
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int locW, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
-        Messager.showMessage("The arrow is stopped!");
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int locW, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	Messager.showMessage("The arrow is stopped!");
+	return false;
     }
 
     @Override
     public String getDescription() {
-        return "Arrow Traps stop arrows.";
+	return "Arrow Traps stop arrows.";
     }
 }

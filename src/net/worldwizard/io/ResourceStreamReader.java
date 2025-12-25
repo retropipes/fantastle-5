@@ -11,44 +11,44 @@ public class ResourceStreamReader implements DataConstants, AutoCloseable {
 
     // Constructors
     public ResourceStreamReader(final InputStream is) {
-        this.br = new BufferedReader(new InputStreamReader(is));
+	this.br = new BufferedReader(new InputStreamReader(is));
     }
 
     // Methods
     @Override
     public void close() throws IOException {
-        this.br.close();
+	this.br.close();
     }
 
     public int readInt() throws IOException {
-        return Integer.parseInt(this.br.readLine());
+	return Integer.parseInt(this.br.readLine());
     }
 
     public float readFloat() throws IOException {
-        return Float.parseFloat(this.br.readLine());
+	return Float.parseFloat(this.br.readLine());
     }
 
     public double readDouble() throws IOException {
-        return Double.parseDouble(this.br.readLine());
+	return Double.parseDouble(this.br.readLine());
     }
 
     public long readLong() throws IOException {
-        return Long.parseLong(this.br.readLine());
+	return Long.parseLong(this.br.readLine());
     }
 
     public byte readByte() throws IOException {
-        return Byte.parseByte(this.br.readLine());
+	return Byte.parseByte(this.br.readLine());
     }
 
     public boolean readBoolean() throws IOException {
-        return Boolean.parseBoolean(this.br.readLine());
+	return Boolean.parseBoolean(this.br.readLine());
     }
 
     public short readShort() throws IOException {
-        return Short.parseShort(this.br.readLine());
+	return Short.parseShort(this.br.readLine());
     }
 
     public String readString() throws IOException {
-        return this.br.readLine();
+	return this.br.readLine();
     }
 }

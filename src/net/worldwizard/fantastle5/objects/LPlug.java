@@ -23,6 +23,6 @@ import net.worldwizard.fantastle5.generic.GenericPlug;
 public class LPlug extends GenericPlug {
     // Constructors
     public LPlug() {
-        super('L');
+	super('L');
     }
 }

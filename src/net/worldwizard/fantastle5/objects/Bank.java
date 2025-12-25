@@ -6,31 +6,31 @@ import net.worldwizard.fantastle5.generic.GenericDungeonObject;
 public class Bank extends GenericDungeonObject {
     // Constructors
     public Bank() {
-        super(false);
+	super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-        Fantastle5.getApplication().getBank().showShop();
+	Fantastle5.getApplication().getBank().showShop();
     }
 
     @Override
     public String getName() {
-        return "Bank";
+	return "Bank";
     }
 
     @Override
     public String getPluralName() {
-        return "Banks";
+	return "Banks";
     }
 
     @Override
     public String getDescription() {
-        return "Banks store money for safe keeping.";
+	return "Banks store money for safe keeping.";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 2;
+	return (byte) 2;
     }
 }

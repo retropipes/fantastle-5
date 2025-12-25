@@ -22,11 +22,11 @@ import net.worldwizard.fantastle5.generic.GenericWallTrap;
 
 public class WallTrap4 extends GenericWallTrap {
     public WallTrap4() {
-        super(4, new TrappedWall4());
+	super(4, new TrappedWall4());
     }
 
     @Override
     public String getDescription() {
-        return "Wall Traps 4 disappear when stepped on, causing all Trapped Walls 4 to also disappear.";
+	return "Wall Traps 4 disappear when stepped on, causing all Trapped Walls 4 to also disappear.";
     }
 }

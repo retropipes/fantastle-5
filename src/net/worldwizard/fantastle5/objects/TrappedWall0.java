@@ -22,11 +22,11 @@ import net.worldwizard.fantastle5.generic.GenericTrappedWall;
 
 public class TrappedWall0 extends GenericTrappedWall {
     public TrappedWall0() {
-        super(0);
+	super(0);
     }
 
     @Override
     public String getDescription() {
-        return "Trapped Walls 0 disappear when any Wall Trap 0 is triggered.";
+	return "Trapped Walls 0 disappear when any Wall Trap 0 is triggered.";
     }
 }

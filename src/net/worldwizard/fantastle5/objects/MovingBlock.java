@@ -16,80 +16,76 @@ public class MovingBlock extends GenericDungeonObject {
 
     // Constructors
     public MovingBlock() {
-        super(true);
-        this.savedObject = new Empty();
-        final RandomRange t = new RandomRange(1, 2);
-        this.activateTimer(t.generate());
+	super(true);
+	this.savedObject = new Empty();
+	final RandomRange t = new RandomRange(1, 2);
+	this.activateTimer(t.generate());
     }
 
     @Override
     public MovingBlock clone() {
-        final MovingBlock copy = new MovingBlock();
-        copy.savedObject = this.savedObject.clone();
-        return copy;
+	final MovingBlock copy = new MovingBlock();
+	copy.savedObject = this.savedObject.clone();
+	return copy;
     }
 
     @Override
     public boolean hasAdditionalProperties() {
-        return true;
+	return true;
     }
 
     public MazeObject getSavedObject() {
-        return this.savedObject;
+	return this.savedObject;
     }
 
     public void setSavedObject(final MazeObject newSavedObject) {
-        this.savedObject = newSavedObject;
+	this.savedObject = newSavedObject;
     }
 
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
-        // Move the block
-        final RandomRange r = new RandomRange(0, 7);
-        final int move = r.generate();
-        Fantastle5.getApplication().getMazeManager().getMaze()
-                .updateMovingBlockPosition(move, dirX, dirY, this);
-        final RandomRange t = new RandomRange(1, 2);
-        this.activateTimer(t.generate());
+	// Move the block
+	final RandomRange r = new RandomRange(0, 7);
+	final int move = r.generate();
+	Fantastle5.getApplication().getMazeManager().getMaze().updateMovingBlockPosition(move, dirX, dirY, this);
+	final RandomRange t = new RandomRange(1, 2);
+	this.activateTimer(t.generate());
     }
 
     @Override
     public String getName() {
-        return "Moving Block";
+	return "Moving Block";
     }
 
     @Override
     public String getPluralName() {
-        return "Moving Blocks";
+	return "Moving Blocks";
     }
 
     @Override
     public String getDescription() {
-        return "Moving Blocks move on their own. They cannot be pushed or pulled.";
+	return "Moving Blocks move on their own. They cannot be pushed or pulled.";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 0;
+	return (byte) 0;
     }
 
     @Override
     public int getCustomFormat() {
-        return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+	return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 
     @Override
-    protected void writeMazeObjectHook(final DataWriter writer)
-            throws IOException {
-        this.savedObject.writeMazeObject(writer);
+    protected void writeMazeObjectHook(final DataWriter writer) throws IOException {
+	this.savedObject.writeMazeObject(writer);
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final DataReader reader,
-            final int formatVersion) throws IOException {
-        final MazeObjectList objectList = Fantastle5.getApplication()
-                .getObjects();
-        this.savedObject = objectList.readMazeObject(reader, formatVersion);
-        return this;
+    protected MazeObject readMazeObjectHook(final DataReader reader, final int formatVersion) throws IOException {
+	final MazeObjectList objectList = Fantastle5.getApplication().getObjects();
+	this.savedObject = objectList.readMazeObject(reader, formatVersion);
+	return this;
     }
 }

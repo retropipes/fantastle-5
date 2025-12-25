@@ -26,43 +26,40 @@ import net.worldwizard.fantastle5.generic.MazeObject;
 public class BrightnessGem extends GenericGem {
     // Constructors
     public BrightnessGem() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Brightness Gem";
+	return "Brightness Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Brightness Gems";
+	return "Brightness Gems";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 4;
+	return (byte) 4;
     }
 
     @Override
     public void postMoveActionHook() {
-        final int currLevel = Fantastle5.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationW();
-        Fantastle5.getApplication().getMazeManager().getMaze()
-                .setVisionRadiusToMaximum(currLevel);
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playLightSound();
-        }
+	final int currLevel = Fantastle5.getApplication().getGameManager().getPlayerManager().getPlayerLocationW();
+	Fantastle5.getApplication().getMazeManager().getMaze().setVisionRadiusToMaximum(currLevel);
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playLightSound();
+	}
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "light";
+	return "light";
     }
 
     @Override
     public String getDescription() {
-        return "Brightness Gems increase the visible area to its maximum.";
+	return "Brightness Gems increase the visible area to its maximum.";
     }
 }

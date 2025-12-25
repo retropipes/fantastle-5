@@ -38,48 +38,48 @@ public class GUIManager {
 
     // Constructors
     public GUIManager() {
-        this.guiFrame = new JFrame("Fantastle");
-        this.guiPane = this.guiFrame.getContentPane();
-        this.guiFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.guiFrame.setLayout(new GridLayout(1, 1));
-        this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
-        this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        this.guiPane.add(this.logoLabel);
-        this.guiFrame.pack();
-        this.guiFrame.setResizable(false);
+	this.guiFrame = new JFrame("Fantastle");
+	this.guiPane = this.guiFrame.getContentPane();
+	this.guiFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	this.guiFrame.setLayout(new GridLayout(1, 1));
+	this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
+	this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
+	this.guiPane.add(this.logoLabel);
+	this.guiFrame.pack();
+	this.guiFrame.setResizable(false);
     }
 
     // Methods
     public JFrame getGUIFrame() {
-        if (this.guiFrame.isVisible()) {
-            return this.guiFrame;
-        } else {
-            return null;
-        }
+	if (this.guiFrame.isVisible()) {
+	    return this.guiFrame;
+	} else {
+	    return null;
+	}
     }
 
     public void showGUI() {
-        final Application app = Fantastle5.getApplication();
-        app.setInGUI(true);
-        this.guiFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
-        this.guiFrame.setVisible(true);
-        app.getMenuManager().setMainMenus();
-        app.getMenuManager().checkFlags();
+	final Application app = Fantastle5.getApplication();
+	app.setInGUI(true);
+	this.guiFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
+	this.guiFrame.setVisible(true);
+	app.getMenuManager().setMainMenus();
+	app.getMenuManager().checkFlags();
     }
 
     public void hideGUI() {
-        final Application app = Fantastle5.getApplication();
-        app.setInGUI(false);
-        this.guiFrame.setVisible(false);
+	final Application app = Fantastle5.getApplication();
+	app.setInGUI(false);
+	this.guiFrame.setVisible(false);
     }
 
     public void hideGUITemporarily() {
-        this.guiFrame.setVisible(false);
+	this.guiFrame.setVisible(false);
     }
 
     public void updateLogo() {
-        final BufferedImageIcon logo = GraphicsManager.getLogo();
-        this.logoLabel.setIcon(logo);
-        this.guiFrame.pack();
+	final BufferedImageIcon logo = GraphicsManager.getLogo();
+	this.logoLabel.setIcon(logo);
+	this.guiFrame.pack();
     }
 }

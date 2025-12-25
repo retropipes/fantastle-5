@@ -24,34 +24,34 @@ import net.worldwizard.fantastle5.resourcemanagers.MonsterImageCache;
 class CacheTask extends Thread {
     // Constructors
     public CacheTask() {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     public void run() {
-        Fantastle5.getApplication().getPrefsManager().updateWaitProgress(0);
-        // Enter Wait Mode
-        Fantastle5.getApplication().getPrefsManager().enterWaitMode();
-        // Update Micro Logo
-        Fantastle5.getApplication().updateMicroLogo();
-        Fantastle5.getApplication().getPrefsManager().updateWaitProgress(20);
-        // Update GUI Logo
-        Fantastle5.getApplication().getGUIManager().updateLogo();
-        Fantastle5.getApplication().getPrefsManager().updateWaitProgress(40);
-        // Recreate image cache
-        ImageCache.recreateCache();
-        Fantastle5.getApplication().getPrefsManager().updateWaitProgress(60);
-        // Recreate monster image cache
-        MonsterImageCache.recreateMonsterCache();
-        Fantastle5.getApplication().getPrefsManager().updateWaitProgress(80);
-        // Update stat image cache
-        Fantastle5.getApplication().getGameManager().getStatGUI().updateGUI();
-        Fantastle5.getApplication().getPrefsManager().updateWaitProgress(100);
-        // Update Help
-        Fantastle5.getApplication().getObjectHelpManager().updateHelpSize();
-        Fantastle5.getApplication().getGeneralHelpManager().updateHelpSize();
-        // Exit Wait Mode
-        Fantastle5.getApplication().getPrefsManager().exitWaitMode();
-        Fantastle5.getApplication().getPrefsManager().hidePrefs();
+	Fantastle5.getApplication().getPrefsManager().updateWaitProgress(0);
+	// Enter Wait Mode
+	Fantastle5.getApplication().getPrefsManager().enterWaitMode();
+	// Update Micro Logo
+	Fantastle5.getApplication().updateMicroLogo();
+	Fantastle5.getApplication().getPrefsManager().updateWaitProgress(20);
+	// Update GUI Logo
+	Fantastle5.getApplication().getGUIManager().updateLogo();
+	Fantastle5.getApplication().getPrefsManager().updateWaitProgress(40);
+	// Recreate image cache
+	ImageCache.recreateCache();
+	Fantastle5.getApplication().getPrefsManager().updateWaitProgress(60);
+	// Recreate monster image cache
+	MonsterImageCache.recreateMonsterCache();
+	Fantastle5.getApplication().getPrefsManager().updateWaitProgress(80);
+	// Update stat image cache
+	Fantastle5.getApplication().getGameManager().getStatGUI().updateGUI();
+	Fantastle5.getApplication().getPrefsManager().updateWaitProgress(100);
+	// Update Help
+	Fantastle5.getApplication().getObjectHelpManager().updateHelpSize();
+	Fantastle5.getApplication().getGeneralHelpManager().updateHelpSize();
+	// Exit Wait Mode
+	Fantastle5.getApplication().getPrefsManager().exitWaitMode();
+	Fantastle5.getApplication().getPrefsManager().hidePrefs();
     }
 }

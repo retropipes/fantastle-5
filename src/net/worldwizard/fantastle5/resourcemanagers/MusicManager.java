@@ -29,46 +29,45 @@ public class MusicManager {
     private static MusicTask task;
 
     private static Music getMusic(final String filename) {
-        try {
-            final File file = new File(
-                    "./Music/" + filename.toLowerCase() + ".wav");
-            final Music mus = new Music(file.toURI().toURL());
-            return mus;
-        } catch (final Exception e) {
-            return null;
-        }
+	try {
+	    final File file = new File("./Music/" + filename.toLowerCase() + ".wav");
+	    final Music mus = new Music(file.toURI().toURL());
+	    return mus;
+	} catch (final Exception e) {
+	    return null;
+	}
     }
 
     public static void playMusic(final String musicName) {
-        MusicManager.CURRENT_MUSIC = MusicManager.getMusic(musicName);
-        if (MusicManager.CURRENT_MUSIC != null) {
-            // Play the music
-            MusicManager.task = new MusicTask(MusicManager.CURRENT_MUSIC);
-            MusicManager.task.start();
-        }
+	MusicManager.CURRENT_MUSIC = MusicManager.getMusic(musicName);
+	if (MusicManager.CURRENT_MUSIC != null) {
+	    // Play the music
+	    MusicManager.task = new MusicTask(MusicManager.CURRENT_MUSIC);
+	    MusicManager.task.start();
+	}
     }
 
     public static void stopMusic() {
-        if (MusicManager.CURRENT_MUSIC != null) {
-            // Stop the music
-            try {
-                MusicManager.CURRENT_MUSIC.done();
-            } catch (final BufferUnderflowException bue) {
-                // Ignore
-            } catch (final NullPointerException np) {
-                // Ignore
-            } catch (final Throwable t) {
-                Fantastle5.getDebug().debug(t);
-            }
-        }
+	if (MusicManager.CURRENT_MUSIC != null) {
+	    // Stop the music
+	    try {
+		MusicManager.CURRENT_MUSIC.done();
+	    } catch (final BufferUnderflowException bue) {
+		// Ignore
+	    } catch (final NullPointerException np) {
+		// Ignore
+	    } catch (final Throwable t) {
+		Fantastle5.getDebug().debug(t);
+	    }
+	}
     }
 
     public static boolean isMusicPlaying() {
-        if (MusicManager.task != null) {
-            if (MusicManager.task.isAlive()) {
-                return true;
-            }
-        }
-        return false;
+	if (MusicManager.task != null) {
+	    if (MusicManager.task.isAlive()) {
+		return true;
+	    }
+	}
+	return false;
     }
 }

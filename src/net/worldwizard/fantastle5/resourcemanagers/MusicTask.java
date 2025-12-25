@@ -29,19 +29,19 @@ class MusicTask extends Thread {
 
     // Constructors
     public MusicTask(final Music music) {
-        this.mus = music;
+	this.mus = music;
     }
 
     @Override
     public void run() {
-        try {
-            this.mus.play();
-        } catch (final BufferUnderflowException bue) {
-            // Ignore
-        } catch (final NullPointerException np) {
-            // Ignore
-        } catch (final Throwable t) {
-            Fantastle5.getDebug().debug(t);
-        }
+	try {
+	    this.mus.play();
+	} catch (final BufferUnderflowException bue) {
+	    // Ignore
+	} catch (final NullPointerException np) {
+	    // Ignore
+	} catch (final Throwable t) {
+	    Fantastle5.getDebug().debug(t);
+	}
     }
 }

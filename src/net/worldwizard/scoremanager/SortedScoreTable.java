@@ -28,117 +28,114 @@ public class SortedScoreTable extends ScoreTable {
 
     // Constructors
     public SortedScoreTable() {
-        super();
-        this.sortOrder = true;
+	super();
+	this.sortOrder = true;
     }
 
-    private SortedScoreTable(final int length, final boolean ascending,
-            final String customUnit) {
-        super(length, customUnit);
-        this.sortOrder = ascending;
+    private SortedScoreTable(final int length, final boolean ascending, final String customUnit) {
+	super(length, customUnit);
+	this.sortOrder = ascending;
     }
 
-    public SortedScoreTable(final int length, final boolean ascending,
-            final long startingScore, final String customUnit) {
-        super(length, customUnit);
-        this.sortOrder = ascending;
-        int x;
-        for (x = 0; x < this.table.length; x++) {
-            this.table[x].setScore(startingScore);
-        }
+    public SortedScoreTable(final int length, final boolean ascending, final long startingScore,
+	    final String customUnit) {
+	super(length, customUnit);
+	this.sortOrder = ascending;
+	int x;
+	for (x = 0; x < this.table.length; x++) {
+	    this.table[x].setScore(startingScore);
+	}
     }
 
     @Override
     public void setEntryScore(final int pos, final long newScore) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     public void setEntryName(final int pos, final String newName) {
-        // Do nothing
+	// Do nothing
     }
 
     public void addScore(final long newScore, final String newName) {
-        int x, y;
-        final Score newEntry = new Score(newScore, newName);
-        if (this.sortOrder) {
-            for (x = 0; x < this.table.length; x++) {
-                if (newScore > this.table[x].getScore()) {
-                    break;
-                }
-            }
-            if (x == this.table.length) {
-                return;
-            }
-            for (y = this.table.length - 1; y > x; y--) {
-                this.table[y] = this.table[y - 1];
-            }
-            this.table[x] = newEntry;
-        } else {
-            for (x = 0; x < this.table.length; x++) {
-                if (newScore < this.table[x].getScore()) {
-                    break;
-                }
-            }
-            if (x == this.table.length) {
-                return;
-            }
-            for (y = this.table.length - 1; y > x; y--) {
-                this.table[y] = this.table[y - 1];
-            }
-            this.table[x] = newEntry;
-        }
+	int x, y;
+	final Score newEntry = new Score(newScore, newName);
+	if (this.sortOrder) {
+	    for (x = 0; x < this.table.length; x++) {
+		if (newScore > this.table[x].getScore()) {
+		    break;
+		}
+	    }
+	    if (x == this.table.length) {
+		return;
+	    }
+	    for (y = this.table.length - 1; y > x; y--) {
+		this.table[y] = this.table[y - 1];
+	    }
+	    this.table[x] = newEntry;
+	} else {
+	    for (x = 0; x < this.table.length; x++) {
+		if (newScore < this.table[x].getScore()) {
+		    break;
+		}
+	    }
+	    if (x == this.table.length) {
+		return;
+	    }
+	    for (y = this.table.length - 1; y > x; y--) {
+		this.table[y] = this.table[y - 1];
+	    }
+	    this.table[x] = newEntry;
+	}
     }
 
     public boolean checkScore(final long newScore) {
-        int x;
-        if (this.sortOrder) {
-            for (x = 0; x < this.table.length; x++) {
-                if (newScore > this.table[x].getScore()) {
-                    x--;
-                    break;
-                }
-            }
-            if (x == this.table.length) {
-                return false;
-            }
-        } else {
-            for (x = 0; x < this.table.length; x++) {
-                if (newScore < this.table[x].getScore()) {
-                    x--;
-                    break;
-                }
-            }
-            if (x == this.table.length) {
-                return false;
-            }
-        }
-        return true;
+	int x;
+	if (this.sortOrder) {
+	    for (x = 0; x < this.table.length; x++) {
+		if (newScore > this.table[x].getScore()) {
+		    x--;
+		    break;
+		}
+	    }
+	    if (x == this.table.length) {
+		return false;
+	    }
+	} else {
+	    for (x = 0; x < this.table.length; x++) {
+		if (newScore < this.table[x].getScore()) {
+		    x--;
+		    break;
+		}
+	    }
+	    if (x == this.table.length) {
+		return false;
+	    }
+	}
+	return true;
     }
 
-    public static SortedScoreTable readSortedScoreTable(
-            final BufferedReader stream) throws IOException {
-        final boolean order = Boolean.parseBoolean(stream.readLine());
-        final int len = Integer.parseInt(stream.readLine());
-        final String unit = stream.readLine();
-        final SortedScoreTable sst = new SortedScoreTable(len, order, unit);
-        for (int x = 0; x < len; x++) {
-            sst.table[x] = Score.readScore(stream);
-        }
-        return sst;
+    public static SortedScoreTable readSortedScoreTable(final BufferedReader stream) throws IOException {
+	final boolean order = Boolean.parseBoolean(stream.readLine());
+	final int len = Integer.parseInt(stream.readLine());
+	final String unit = stream.readLine();
+	final SortedScoreTable sst = new SortedScoreTable(len, order, unit);
+	for (int x = 0; x < len; x++) {
+	    sst.table[x] = Score.readScore(stream);
+	}
+	return sst;
     }
 
-    public void writeSortedScoreTable(final BufferedWriter stream)
-            throws IOException {
-        stream.write(Boolean.toString(this.sortOrder) + "\n");
-        stream.write(Integer.toString(this.table.length) + "\n");
-        if (this.unit.length() > 1) {
-            stream.write(this.unit.substring(1) + "\n");
-        } else {
-            stream.write(this.unit + "\n");
-        }
-        for (final Score element : this.table) {
-            element.writeScore(stream);
-        }
+    public void writeSortedScoreTable(final BufferedWriter stream) throws IOException {
+	stream.write(Boolean.toString(this.sortOrder) + "\n");
+	stream.write(Integer.toString(this.table.length) + "\n");
+	if (this.unit.length() > 1) {
+	    stream.write(this.unit.substring(1) + "\n");
+	} else {
+	    stream.write(this.unit + "\n");
+	}
+	for (final Score element : this.table) {
+	    element.writeScore(stream);
+	}
     }
 }

@@ -11,26 +11,25 @@ public abstract class CombatUsableItem extends Item {
     protected String sound;
 
     // Constructors
-    public CombatUsableItem(final String itemName, final int itemBuyPrice,
-            final char itemTarget) {
-        super(itemName, ItemCategoryConstants.ITEM_CATEGORY_USABLE, 1, 0);
-        this.setCombatUsable(true);
-        this.setBuyPrice(itemBuyPrice);
-        this.target = itemTarget;
-        this.defineFields();
+    public CombatUsableItem(final String itemName, final int itemBuyPrice, final char itemTarget) {
+	super(itemName, ItemCategoryConstants.ITEM_CATEGORY_USABLE, 1, 0);
+	this.setCombatUsable(true);
+	this.setBuyPrice(itemBuyPrice);
+	this.target = itemTarget;
+	this.defineFields();
     }
 
     // Methods
     public char getTarget() {
-        return this.target;
+	return this.target;
     }
 
     public Effect getEffect() {
-        return this.e;
+	return this.e;
     }
 
     public String getSound() {
-        return this.sound;
+	return this.sound;
     }
 
     protected abstract void defineFields();

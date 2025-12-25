@@ -26,43 +26,40 @@ import net.worldwizard.fantastle5.generic.MazeObject;
 public class LightnessGem extends GenericGem {
     // Constructors
     public LightnessGem() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Lightness Gem";
+	return "Lightness Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Lightness Gems";
+	return "Lightness Gems";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 3;
+	return (byte) 3;
     }
 
     @Override
     public void postMoveActionHook() {
-        final int currLevel = Fantastle5.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationW();
-        Fantastle5.getApplication().getMazeManager().getMaze()
-                .incrementVisionRadius(currLevel);
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            MazeObject.playLightSound();
-        }
+	final int currLevel = Fantastle5.getApplication().getGameManager().getPlayerManager().getPlayerLocationW();
+	Fantastle5.getApplication().getMazeManager().getMaze().incrementVisionRadius(currLevel);
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    MazeObject.playLightSound();
+	}
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "light";
+	return "light";
     }
 
     @Override
     public String getDescription() {
-        return "Lightness Gems increase the visible area by 1.";
+	return "Lightness Gems increase the visible area by 1.";
     }
 }

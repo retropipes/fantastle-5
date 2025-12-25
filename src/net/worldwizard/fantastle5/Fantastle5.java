@@ -41,107 +41,101 @@ public class Fantastle5 {
     private static Application application;
     private static final String PROGRAM_NAME = "Fantastle";
     private static final String ERROR_MESSAGE = "Perhaps a bug is to blame for this error message.\n"
-            + "Include the debug log with your bug report.\n"
-            + "Email bug reports to: fantastle@worldwizard.net\n"
-            + "Subject: Fantastle Bug Report";
+	    + "Include the debug log with your bug report.\n" + "Email bug reports to: fantastle@worldwizard.net\n"
+	    + "Subject: Fantastle Bug Report";
     private static final String ERROR_TITLE = "Fantastle Error";
-    private static final Ghosted debug = new Ghosted(Fantastle5.PROGRAM_NAME,
-            Fantastle5.ERROR_MESSAGE, Fantastle5.ERROR_TITLE);
+    private static final Ghosted debug = new Ghosted(Fantastle5.PROGRAM_NAME, Fantastle5.ERROR_MESSAGE,
+	    Fantastle5.ERROR_TITLE);
     private static boolean IN_FANTASTLE_5 = true;
 
     // Methods
     public static Application getApplication() {
-        return Fantastle5.application;
+	return Fantastle5.application;
     }
 
     public static Ghosted getDebug() {
-        return Fantastle5.debug;
+	return Fantastle5.debug;
     }
 
     public static boolean inFantastle5() {
-        return Fantastle5.IN_FANTASTLE_5;
+	return Fantastle5.IN_FANTASTLE_5;
     }
 
     public static void leaveFantastle5() {
-        Fantastle5.IN_FANTASTLE_5 = false;
+	Fantastle5.IN_FANTASTLE_5 = false;
     }
 
     public static void main(final String[] args) {
-        if (System.getProperty("os.name").startsWith("Mac OS X")) {
-            // Mac OS X-specific stuff
-            System.setProperty(
-                    "com.apple.mrj.application.apple.menu.about.name",
-                    "Fantastle");
-            System.setProperty("apple.laf.useScreenMenuBar", "true");
-        } else {
-            try {
-                // Tell the UIManager to use the platform native look and feel
-                UIManager.setLookAndFeel(
-                        UIManager.getSystemLookAndFeelClassName());
-            } catch (final Exception e) {
-                // Do nothing
-            }
-        }
-        try {
-            Fantastle5.application = new Application();
-            Fantastle5.application.postConstruct();
-            // Load stuff
-            Fantastle5.showLoadingScreen();
-            // Done loading
-            Fantastle5.application.playLogoSound();
-            Fantastle5.application.getGUIManager().showGUI();
-            // Handle file open requests
-            if (args != null) {
-                if (args.length > 0) {
-                    Fantastle5.application.getMazeManager()
-                            .loadFromOSHandler(args[0]);
-                }
-            }
-        } catch (final Throwable t) {
-            Fantastle5.getDebug().debug(t);
-        }
+	if (System.getProperty("os.name").startsWith("Mac OS X")) {
+	    // Mac OS X-specific stuff
+	    System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Fantastle");
+	    System.setProperty("apple.laf.useScreenMenuBar", "true");
+	} else {
+	    try {
+		// Tell the UIManager to use the platform native look and feel
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    } catch (final Exception e) {
+		// Do nothing
+	    }
+	}
+	try {
+	    Fantastle5.application = new Application();
+	    Fantastle5.application.postConstruct();
+	    // Load stuff
+	    Fantastle5.showLoadingScreen();
+	    // Done loading
+	    Fantastle5.application.playLogoSound();
+	    Fantastle5.application.getGUIManager().showGUI();
+	    // Handle file open requests
+	    if (args != null) {
+		if (args.length > 0) {
+		    Fantastle5.application.getMazeManager().loadFromOSHandler(args[0]);
+		}
+	    }
+	} catch (final Throwable t) {
+	    Fantastle5.getDebug().debug(t);
+	}
     }
 
     private static void showLoadingScreen() {
-        // Set up wait frame
-        final JFrame waitFrame = new JFrame("Loading...");
-        final Container logoContainer = new Container();
-        final Container textContainer = new Container();
-        final JLabel waitLogo = new JLabel("", GraphicsManager.getLoadingLogo(),
-                SwingConstants.CENTER);
-        final JLabel waitLabel = new JLabel("Creating Caches...");
-        final JProgressBar waitProgress = new JProgressBar();
-        waitProgress.setMinimum(0);
-        waitProgress.setMaximum(100);
-        waitProgress.setValue(0);
-        waitFrame.getContentPane().setLayout(new BorderLayout());
-        logoContainer.setLayout(new FlowLayout());
-        textContainer.setLayout(new GridLayout(2, 1));
-        logoContainer.add(waitLogo);
-        textContainer.add(waitLabel);
-        textContainer.add(waitProgress);
-        waitFrame.getContentPane().add(logoContainer, BorderLayout.CENTER);
-        waitFrame.getContentPane().add(textContainer, BorderLayout.SOUTH);
-        waitFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        waitFrame.setResizable(false);
-        waitFrame.pack();
-        // Do the loading
-        waitFrame.setVisible(true);
-        // Create logo cache
-        Fantastle5.getApplication().getGUIManager().updateLogo();
-        waitProgress.setValue(20);
-        // Create image cache
-        ImageCache.recreateCache();
-        waitProgress.setValue(40);
-        // Create monster image cache
-        MonsterImageCache.recreateMonsterCache();
-        waitProgress.setValue(60);
-        // Create sound cache
-        SoundCache.recreateCache();
-        waitProgress.setValue(80);
-        // Create stat image cache
-        Fantastle5.getApplication().getGameManager().getStatGUI().updateGUI();
-        waitProgress.setValue(100);
-        waitFrame.setVisible(false);
+	// Set up wait frame
+	final JFrame waitFrame = new JFrame("Loading...");
+	final Container logoContainer = new Container();
+	final Container textContainer = new Container();
+	final JLabel waitLogo = new JLabel("", GraphicsManager.getLoadingLogo(), SwingConstants.CENTER);
+	final JLabel waitLabel = new JLabel("Creating Caches...");
+	final JProgressBar waitProgress = new JProgressBar();
+	waitProgress.setMinimum(0);
+	waitProgress.setMaximum(100);
+	waitProgress.setValue(0);
+	waitFrame.getContentPane().setLayout(new BorderLayout());
+	logoContainer.setLayout(new FlowLayout());
+	textContainer.setLayout(new GridLayout(2, 1));
+	logoContainer.add(waitLogo);
+	textContainer.add(waitLabel);
+	textContainer.add(waitProgress);
+	waitFrame.getContentPane().add(logoContainer, BorderLayout.CENTER);
+	waitFrame.getContentPane().add(textContainer, BorderLayout.SOUTH);
+	waitFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	waitFrame.setResizable(false);
+	waitFrame.pack();
+	// Do the loading
+	waitFrame.setVisible(true);
+	// Create logo cache
+	Fantastle5.getApplication().getGUIManager().updateLogo();
+	waitProgress.setValue(20);
+	// Create image cache
+	ImageCache.recreateCache();
+	waitProgress.setValue(40);
+	// Create monster image cache
+	MonsterImageCache.recreateMonsterCache();
+	waitProgress.setValue(60);
+	// Create sound cache
+	SoundCache.recreateCache();
+	waitProgress.setValue(80);
+	// Create stat image cache
+	Fantastle5.getApplication().getGameManager().getStatGUI().updateGUI();
+	waitProgress.setValue(100);
+	waitFrame.setVisible(false);
     }
 }

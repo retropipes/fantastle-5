@@ -24,40 +24,39 @@ import net.worldwizard.fantastle5.maze.Maze;
 public abstract class GenericInventoryModifier extends MazeObject {
     // Constructors
     protected GenericInventoryModifier() {
-        super(false);
+	super(false);
     }
 
     @Override
-    public abstract void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv);
+    public abstract void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
 
     @Override
     public byte getGroupID() {
-        return (byte) 23;
+	return (byte) 23;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INVENTORY_MODIFIER);
+	this.type.set(TypeConstants.TYPE_INVENTORY_MODIFIER);
     }
 
     @Override
     public int getLayer() {
-        return Maze.LAYER_OBJECT;
+	return Maze.LAYER_OBJECT;
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-        return "grab";
+	return "grab";
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+	return MazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 }

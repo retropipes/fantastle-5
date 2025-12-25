@@ -24,17 +24,16 @@ import net.worldwizard.fantastle5.Fantastle5;
 public abstract class GenericWand extends GenericUsableObject {
     // Constructors
     protected GenericWand() {
-        super(1);
+	super(1);
     }
 
     @Override
     public abstract String getName();
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z, final int w) {
-        final Application app = Fantastle5.getApplication();
-        app.getGameManager().morph(mo, x, y, z, w);
+    public void useAction(final MazeObject mo, final int x, final int y, final int z, final int w) {
+	final Application app = Fantastle5.getApplication();
+	app.getGameManager().morph(mo, x, y, z, w);
     }
 
     @Override
@@ -42,14 +41,14 @@ public abstract class GenericWand extends GenericUsableObject {
 
     @Override
     public byte getGroupID() {
-        return (byte) 20;
+	return (byte) 20;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_WAND);
-        this.type.set(TypeConstants.TYPE_USABLE);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+	this.type.set(TypeConstants.TYPE_WAND);
+	this.type.set(TypeConstants.TYPE_USABLE);
+	this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+	this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 }

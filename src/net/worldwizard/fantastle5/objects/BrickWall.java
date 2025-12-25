@@ -27,39 +27,37 @@ import net.worldwizard.fantastle5.generic.GenericSingleLock;
 public class BrickWall extends GenericSingleLock {
     // Constructors
     public BrickWall() {
-        super(new Hammer());
+	super(new Hammer());
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Messager.showMessage("You need a hammer");
-        }
-        // Play move failed sound, if it's enabled
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveFailedSound();
-        }
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Messager.showMessage("You need a hammer");
+	}
+	// Play move failed sound, if it's enabled
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveFailedSound();
+	}
     }
 
     @Override
     public String getName() {
-        return "Brick Wall";
+	return "Brick Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Brick Walls";
+	return "Brick Walls";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 2;
+	return (byte) 2;
     }
 
     @Override
     public String getDescription() {
-        return "Brick Walls require Hammers to destroy.";
+	return "Brick Walls require Hammers to destroy.";
     }
 }

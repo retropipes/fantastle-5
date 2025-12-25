@@ -23,7 +23,7 @@ import net.worldwizard.fantastle5.maze.Maze;
 public abstract class GenericUsableObject extends GenericInventoryableObject {
     // Constructors
     protected GenericUsableObject(final int newUses) {
-        super(true, newUses);
+	super(true, newUses);
     }
 
     @Override
@@ -34,19 +34,19 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
 
     @Override
     public byte getGroupID() {
-        return (byte) 19;
+	return (byte) 19;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_USABLE);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+	this.type.set(TypeConstants.TYPE_USABLE);
+	this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+	this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public int getLayer() {
-        return Maze.LAYER_OBJECT;
+	return Maze.LAYER_OBJECT;
     }
 
     @Override
@@ -54,11 +54,11 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+	return MazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 }

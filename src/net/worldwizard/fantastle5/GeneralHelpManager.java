@@ -35,38 +35,32 @@ public class GeneralHelpManager {
 
     // Constructors
     public GeneralHelpManager() {
-        final URL helpURL = HelpManager.getHelpURL();
-        this.hv = new HTMLHelpViewer(helpURL);
-        this.helpFrame = new JFrame("Fantastle Help");
-        this.helpFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        this.helpFrame.setLayout(new FlowLayout());
-        this.helpFrame.add(this.hv.getHelp());
-        if (Fantastle5.getApplication().getPrefsManager()
-                .isMobileModeEnabled()) {
-            this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE,
-                    GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
-        } else {
-            this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE,
-                    GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
-        }
-        this.helpFrame.pack();
-        this.helpFrame.setResizable(false);
+	final URL helpURL = HelpManager.getHelpURL();
+	this.hv = new HTMLHelpViewer(helpURL);
+	this.helpFrame = new JFrame("Fantastle Help");
+	this.helpFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+	this.helpFrame.setLayout(new FlowLayout());
+	this.helpFrame.add(this.hv.getHelp());
+	if (Fantastle5.getApplication().getPrefsManager().isMobileModeEnabled()) {
+	    this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE, GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
+	} else {
+	    this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE, GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
+	}
+	this.helpFrame.pack();
+	this.helpFrame.setResizable(false);
     }
 
     // Methods
     public void showHelp() {
-        this.helpFrame.setVisible(true);
+	this.helpFrame.setVisible(true);
     }
 
     public void updateHelpSize() {
-        if (Fantastle5.getApplication().getPrefsManager()
-                .isMobileModeEnabled()) {
-            this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE,
-                    GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
-        } else {
-            this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE,
-                    GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
-        }
-        this.helpFrame.pack();
+	if (Fantastle5.getApplication().getPrefsManager().isMobileModeEnabled()) {
+	    this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE, GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
+	} else {
+	    this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE, GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
+	}
+	this.helpFrame.pack();
     }
 }

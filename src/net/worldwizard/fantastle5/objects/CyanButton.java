@@ -22,26 +22,26 @@ import net.worldwizard.fantastle5.generic.GenericButton;
 
 public class CyanButton extends GenericButton {
     public CyanButton() {
-        super(new CyanWallOff(), new CyanWallOn());
+	super(new CyanWallOff(), new CyanWallOn());
     }
 
     @Override
     public String getName() {
-        return "Cyan Button";
+	return "Cyan Button";
     }
 
     @Override
     public String getPluralName() {
-        return "Cyan Buttons";
+	return "Cyan Buttons";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 9;
+	return (byte) 9;
     }
 
     @Override
     public String getDescription() {
-        return "Cyan Buttons will cause all Cyan Walls Off to become On, and all Cyan Walls On to become Off.";
+	return "Cyan Buttons will cause all Cyan Walls Off to become On, and all Cyan Walls On to become Off.";
     }
 }

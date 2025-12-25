@@ -23,26 +23,26 @@ import net.worldwizard.fantastle5.generic.GenericGround;
 public class Grass extends GenericGround {
     // Constructors
     public Grass() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Grass";
+	return "Grass";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Grass";
+	return "Squares of Grass";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 5;
+	return (byte) 5;
     }
 
     @Override
     public String getDescription() {
-        return "Grass is one of the many types of ground.";
+	return "Grass is one of the many types of ground.";
     }
 }

@@ -28,19 +28,17 @@ import net.worldwizard.fantastle5.maze.Maze;
 public abstract class GenericToggleWall extends MazeObject {
     // Constructors
     protected GenericToggleWall(final boolean solidState) {
-        super(solidState);
+	super(solidState);
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        final Application app = Fantastle5.getApplication();
-        Messager.showMessage("Can't go that way");
-        // Play move failed sound, if it's enabled
-        if (app.getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            this.playMoveFailedSound();
-        }
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final Application app = Fantastle5.getApplication();
+	Messager.showMessage("Can't go that way");
+	// Play move failed sound, if it's enabled
+	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    this.playMoveFailedSound();
+	}
     }
 
     @Override
@@ -48,26 +46,26 @@ public abstract class GenericToggleWall extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Maze.LAYER_OBJECT;
+	return Maze.LAYER_OBJECT;
     }
 
     @Override
     public byte getGroupID() {
-        return (byte) 25;
+	return (byte) 25;
     }
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TOGGLE_WALL);
+	this.type.set(TypeConstants.TYPE_TOGGLE_WALL);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+	return MazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
+	// Do nothing
     }
 }

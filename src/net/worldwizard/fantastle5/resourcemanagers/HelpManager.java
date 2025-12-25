@@ -22,7 +22,6 @@ import java.net.URL;
 
 public class HelpManager {
     public static URL getHelpURL() {
-        return HelpManager.class.getResource(
-                "/net/worldwizard/fantastle5/resources/help/FantastleHelp.html");
+	return HelpManager.class.getResource("/net/worldwizard/fantastle5/resources/help/FantastleHelp.html");
     }
 }

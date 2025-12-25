@@ -29,37 +29,35 @@ import net.worldwizard.fantastle5.resourcemanagers.SoundManager;
 public class EasierTrap extends GenericTrap {
     // Constructors
     public EasierTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Easier Trap";
+	return "Easier Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Easier Traps";
+	return "Easier Traps";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 12;
+	return (byte) 12;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Messager.showMessage("The monsters get weaker...");
-        PCManager.getPlayer().decrementMonsterLevel();
-        if (Fantastle5.getApplication().getPrefsManager()
-                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-            SoundManager.playSoundAsynchronously("easier");
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Messager.showMessage("The monsters get weaker...");
+	PCManager.getPlayer().decrementMonsterLevel();
+	if (Fantastle5.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+	    SoundManager.playSoundAsynchronously("easier");
+	}
     }
 
     @Override
     public String getDescription() {
-        return "Easier Traps make the monsters easier to defeat.";
+	return "Easier Traps make the monsters easier to defeat.";
     }
 }

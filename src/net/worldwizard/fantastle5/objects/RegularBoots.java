@@ -23,26 +23,26 @@ import net.worldwizard.fantastle5.generic.GenericBoots;
 public class RegularBoots extends GenericBoots {
     // Constructors
     public RegularBoots() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Regular Boots";
+	return "Regular Boots";
     }
 
     @Override
     public String getPluralName() {
-        return "Pairs of Regular Boots";
+	return "Pairs of Regular Boots";
     }
 
     @Override
     public byte getObjectID() {
-        return (byte) 0;
+	return (byte) 0;
     }
 
     @Override
     public String getDescription() {
-        return "";
+	return "";
     }
 }
